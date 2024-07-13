@@ -1,10 +1,7 @@
-import './index.css'
+import './index.css';
 
 function App() {
-
-  return (
-      <div className='px-52'>test</div>
-  )
+  return <div className="px-52">test</div>;
 }
 
-export default App
+export default App;
