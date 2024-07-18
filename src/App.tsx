@@ -1,7 +1,15 @@
 import './index.css';
+import { Route, Routes } from 'react-router-dom';
+import { MainPage } from './components/MainPage/MainPage.tsx';
 
 function App() {
-  return <div className="px-52">test</div>;
+  return (
+    <>
+      <Routes>
+        <Route path={'/'} element={<MainPage />} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;
