@@ -1,7 +1,10 @@
 import Map from '../../assets/Header/Map Pin.svg';
 import Arrow from '../../assets/Header/Arrow down.svg';
+import { useNavigate } from 'react-router-dom';
 
 export const HeaderAuth = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="flex justify-between items-center border-b-2 h-[42px] pl-[10%] pr-[10%] poppins-md">
@@ -19,7 +22,15 @@ export const HeaderAuth = () => {
             <img className="pr-4" src={Arrow} alt="#" />
           </button>
           <div className="flex gap-1  ">
-            <button className="cursor-pointer">Sign In</button>
+            <button
+              className="cursor-pointer"
+              onClick={() => {
+                console.log('1');
+                navigate('/signin');
+              }}
+            >
+              Sign In
+            </button>
             <span className="pl-1 pr-1">/</span>
             <button className="cursor-pointer">Sign Up</button>
           </div>

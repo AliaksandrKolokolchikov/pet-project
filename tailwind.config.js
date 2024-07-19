@@ -9,7 +9,7 @@ module.exports = {
       },
       colors: {
         'gray-opacity': 'rgba(102, 102, 102)',
-        green: 'rgba(0,197,0)',
+        'green-lime': 'rgba(0,197,0)',
         'dark-green': 'rgba(44, 116, 47)',
       },
     },
