@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import validator from 'validator';
 
 import eyeIcon from '../../assets/SignIn/eye.svg';
+import { getUserByCredentials } from '../../db.ts';
+import { ROUTES } from '../../constants';
 
 export const SignInForm = () => {
   const [email, setEmail] = useState('');
@@ -12,6 +15,7 @@ export const SignInForm = () => {
   const [passwordError, setPasswordError] = useState('');
   const [emailValid, setEmailValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
+  const navigate = useNavigate();
 
   const validateEmail = (email: string) => {
     if (!validator.isEmail(email)) {
@@ -38,13 +42,14 @@ export const SignInForm = () => {
     }
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const isDisabled = password && email && !passwordError && !emailError;
+
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     validateEmail(email);
     validatePassword(password);
-    if (emailValid && passwordValid) {
-      console.log({ email, password, rememberMe });
-    }
+    await getUserByCredentials(email, password);
+    navigate('/');
   };
 
   return (
@@ -128,15 +133,16 @@ export const SignInForm = () => {
         </div>
         <button
           type="submit"
-          className="w-full bg-green-lime text-white py-2 rounded focus:outline-none hover:bg-green-600 transition duration-200"
+          disabled={Boolean(!isDisabled)}
+          className="w-full bg-green-lime text-white py-2 rounded focus:outline-none hover:bg-green-600 transition duration-200 disabled:bg-[#2C742F33] disabled:text-[#2C742F]"
         >
           Login
         </button>
         <p className="text-center mt-4">
           Don’t have an account?{' '}
-          <a href="#" className="text-green-500 font-bold">
+          <Link to={ROUTES.SIGN_UP} className="text-green-500 font-bold">
             Register
-          </a>
+          </Link>
         </p>
       </form>
     </div>
