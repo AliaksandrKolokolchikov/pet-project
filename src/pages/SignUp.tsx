@@ -1,12 +1,12 @@
 import { Header } from '../components';
-import { SignInForm } from '../components/SignInForm/SignInForm.tsx';
 import { Footer } from '../components/Footer/Footer.tsx';
+import { SignUpForm } from '../components/SignUpForm/SignUpForm.tsx';
 
-export const SignInPage = () => {
+export const SignUpPage = () => {
   return (
     <>
       <Header />
-      <SignInForm />
+      <SignUpForm />
       <Footer />
     </>
   );

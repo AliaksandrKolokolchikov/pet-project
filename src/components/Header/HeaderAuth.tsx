@@ -9,30 +9,36 @@ export const HeaderAuth = () => {
     <>
       <div className="flex justify-between items-center border-b-2 h-[42px] pl-[10%] pr-[10%] poppins-md">
         <div className="flex gap-2  items-center">
-          <img src={Map} alt="#" />
+          <img src={Map} alt="Your location" />
           <div>Store Location: Lincoln- 344, Illinois, Chicago, USA</div>
         </div>
         <div className="flex gap-1.5 items-center">
-          <span>Eng</span>
+          <span className="hover:text-green-400 cursor-pointer">Eng</span>
           <button>
-            <img src={Arrow} alt="#" />
+            <img src={Arrow} alt="Arrow down" />
           </button>
-          <span>USD</span>
+          <span className="hover:text-green-400 cursor-pointer">USD</span>
           <button>
-            <img className="pr-4" src={Arrow} alt="#" />
+            <img className="pr-4" src={Arrow} alt="Arrow down" />
           </button>
           <div className="flex gap-1  ">
             <button
-              className="cursor-pointer"
+              className="hover:text-green-400"
               onClick={() => {
-                console.log('1');
                 navigate('/signin');
               }}
             >
               Sign In
             </button>
             <span className="pl-1 pr-1">/</span>
-            <button className="cursor-pointer">Sign Up</button>
+            <button
+              className="hover:text-green-400"
+              onClick={() => {
+                navigate('/signup');
+              }}
+            >
+              Sign Up
+            </button>
           </div>
         </div>
       </div>

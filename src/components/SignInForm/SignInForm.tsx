@@ -3,7 +3,7 @@ import validator from 'validator';
 
 import eyeIcon from '../../assets/SignIn/eye.svg';
 
-export const SignInForm: React.FC = () => {
+export const SignInForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
@@ -106,9 +106,7 @@ export const SignInForm: React.FC = () => {
             onClick={() => setShowPassword(!showPassword)}
             className="absolute bg-cover bg-center mt-3 right-0 mr-2 px-3 py-2 focus:outline-none"
             style={{ backgroundImage: `url(${eyeIcon})` }}
-          >
-            {/*<img src={eyeIcon} alt="eye icon" className="block" />*/}
-          </button>
+          ></button>
           {passwordError && (
             <div className="text-red-500 mt-1">{passwordError}</div>
           )}
