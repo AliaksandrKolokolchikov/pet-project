@@ -5,37 +5,47 @@ export const HeaderNavLink = () => {
   return (
     <div className="flex justify-between items-center h-[60px] pl-[10%] pr-[10%] bg-gray-800 ">
       <div className="flex items-center gap-1 poppins-nav">
-        <span>Home</span>
+        <span className="hover:text-white cursor-pointer">Home</span>
         <button>
-          <img src={Arrow} alt="#" />
+          <img src={Arrow} alt="Arrow down" />
         </button>
         <div className="flex gap-1">
-          <span className="pl-[32px]">Shop</span>
+          <span className="pl-[32px] hover:text-white cursor-pointer">
+            Shop
+          </span>
           <button>
-            <img src={Arrow} alt="#" />
+            <img src={Arrow} alt="Arrow down" />
           </button>
         </div>
         <div className="flex gap-1">
-          <span className="pl-[32px]">Pages</span>
+          <span className="pl-[32px] hover:text-white cursor-pointer">
+            Pages
+          </span>
           <button>
-            <img src={Arrow} alt="#" />
+            <img src={Arrow} alt="Arrow down" />
           </button>
         </div>
         <div className="flex gap-1">
-          <span className="pl-[32px]">Blog</span>
+          <span className="pl-[32px] hover:text-white cursor-pointer">
+            Blog
+          </span>
           <button>
-            <img src={Arrow} alt="#" />
+            <img src={Arrow} alt="Arrow down" />
           </button>
         </div>
         <div className="flex">
-          <span className="pl-[32px]">About Us</span>
+          <span className="pl-[32px] hover:text-white cursor-pointer">
+            About Us
+          </span>
         </div>
         <div className="flex">
-          <span className="pl-[32px]">Contact Us</span>
+          <span className="pl-[32px] hover:text-white cursor-pointer">
+            Contact Us
+          </span>
         </div>
       </div>
       <div className="flex gap-2 poppins-nav items-center">
-        <img src={Phone} alt="#" />
+        <img src={Phone} alt="Phone" />
         <span className="text-white cursor-pointer">(219) 555-014</span>
       </div>
     </div>

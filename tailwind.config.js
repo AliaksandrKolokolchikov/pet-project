@@ -7,9 +7,14 @@ module.exports = {
       fontFamily: {
         Poppins: ['Poppins', 'sans-serif'],
       },
+      backgroundImage: {
+        'up-bg': "url('src/assets/MainPage/BG up .svg')",
+        'big-bg': "url('src/assets/MainPage/Banner Big.svg')",
+        'down-bg': "url('src/assets/MainPage/BG.svg')",
+      },
       colors: {
         'gray-opacity': 'rgba(102, 102, 102)',
-        green: 'rgba(0,197,0)',
+        'green-lime': 'rgba(0,197,0)',
         'dark-green': 'rgba(44, 116, 47)',
       },
     },
