@@ -2,15 +2,14 @@ import ArrowRight from '../assets/MainPage/arrow right.svg';
 import { Header } from '../components';
 import { Footer } from '../components';
 import { MainMiddleInfo } from '../components/MainMiddleInfo/MainMiddleInfo.tsx';
-import { PopularCategoriesBlock } from '../components/Popular Categories/PopularCategoriesBlock.tsx';
-import { CardList, PopularImages } from '../products/ui/cardList.tsx';
+import { PopularCategoriesBlock } from '../components/ItemCards/PopularCategoriesBlock.tsx';
 
 export const MainPage = () => {
   return (
     <>
       <Header />
-      <div className="px-[10%] relative">
-        <div className="bg-big-bg bg-no-repeat w-[100%] sm:w-[65%] lg:w-[70%] md:w-[60%] xl:w-[65%] 2xl:w-full">
+      <div className="px-[10%] mt-[24px] flex h-[600px]">
+        <div className="bg-big-bg bg-center bg-no-repeat w-full max-w-[872px]">
           <div className="pt-[155px] pl-[60px] font-[Poppins]">
             <p className="font-semibold text-[48px] text-white w-[70%]">
               Fresh & Healthy Organic Food
@@ -38,10 +37,11 @@ export const MainPage = () => {
             </button>
           </div>
         </div>
+        <div className="flex flex-col w-[22rem] ml-1 gap-y-2">
+          <div className="bg-down-bg bg-no-repeat bg-center  w-full h-full max-w-[423px] rounded-[15px]"></div>
+          <div className="bg-up-bg bg-no-repeat bg-center w-full h-full max-w-[423px] rounded-[15px]"></div>
+        </div>
       </div>
-      {CardList.map((item) => (
-        <PopularImages {...item} key={item.id} />
-      ))}
       <MainMiddleInfo />
       <PopularCategoriesBlock />
       <Footer />
