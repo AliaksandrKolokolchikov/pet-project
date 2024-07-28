@@ -1,6 +1,6 @@
 import arrowRight from '../../assets/MainPage/arrow right.svg';
 
-export const PopularCategories = () => {
+export const PopularCategoriesBlock = () => {
   return (
     <div className="h-[520px] px-[10%] font-[Poppins]">
       <div className=" border-dashed border ">
