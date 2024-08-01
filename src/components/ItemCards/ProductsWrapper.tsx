@@ -10,8 +10,8 @@ export const ProductWrapper = ({ title, children }: Props) => {
   return (
     <div className="px-[5%] font-[Poppins] w-full">
       <div>
-        <div className="flex items-center justify-between px-[5%]">
-          <span className="text-[32px] font-semibold">{title}</span>
+        <div className="flex items-center justify-between px-[3%] pb-5">
+          <span className="text-[32px] font-semibold ">{title}</span>
           <div className="flex group">
             <button className="font-[500] text-[#00B307] pr-3  group-hover:text-[#2C742F]">
               View All
