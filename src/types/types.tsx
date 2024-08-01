@@ -4,6 +4,8 @@ export interface Product {
   image?: string;
   id?: number;
   price?: string;
+  isLarge?: boolean;
+  rating?: number;
 }
 
 export interface Commentary {

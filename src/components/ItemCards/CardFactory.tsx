@@ -7,6 +7,7 @@ import { FeaturedProducts } from './FeaturedProducts/FeaturedProducts.tsx';
 
 type Props = {
   product: Product;
+  index?: number;
 };
 
 export const CardFactory = ({ product }: Props) => {

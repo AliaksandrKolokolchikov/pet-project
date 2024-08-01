@@ -7,7 +7,7 @@ export const PopularCategoriesBlock = () => {
     <>
       <ProductWrapper title={'Popular Categories'}>
         {CardList.map((item) => (
-          <CardFactory product={item} key={item.id} />
+          <CardFactory product={item} key={item.id + item.title} />
         ))}
       </ProductWrapper>
     </>

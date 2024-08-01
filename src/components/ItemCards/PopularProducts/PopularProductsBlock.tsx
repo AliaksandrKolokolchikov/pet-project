@@ -7,7 +7,7 @@ export const PopularProductsBlock = () => {
     <>
       <ProductWrapper title={'Popular Products'}>
         {PopularProducts.map((item) => (
-          <CardFactory product={item} key={item.id} />
+          <CardFactory product={item} key={item.id + item.title} />
         ))}
       </ProductWrapper>
     </>

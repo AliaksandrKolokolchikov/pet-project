@@ -155,6 +155,8 @@ export const HotDeals = [
     category: CATEGORY.DEALS,
     image: './src/assets/products/HotDeals/bigApple.png',
     id: 1,
+    isLarge: true,
+    rating: 5,
   },
   {
     title: 'Chinese cabbage',
@@ -162,6 +164,7 @@ export const HotDeals = [
     category: CATEGORY.DEALS,
     image: './src/assets/products/popularProducts/cabbage.svg',
     id: 2,
+    rating: 4,
   },
   {
     title: 'Green Lettuce',
@@ -169,6 +172,7 @@ export const HotDeals = [
     category: CATEGORY.DEALS,
     image: './src/assets/products/popularProducts/lettuce.svg',
     id: 3,
+    rating: 4,
   },
   {
     title: 'Eggplant',
@@ -176,6 +180,7 @@ export const HotDeals = [
     category: CATEGORY.DEALS,
     image: './src/assets/products/popularProducts/eggplant.svg',
     id: 4,
+    rating: 5,
   },
   {
     title: 'Fresh Cauliflower',
@@ -183,6 +188,7 @@ export const HotDeals = [
     category: CATEGORY.DEALS,
     image: './src/assets/products/popularProducts/cauliflower.svg',
     id: 5,
+    rating: 4,
   },
   {
     title: 'Green Capsicum',
@@ -190,6 +196,7 @@ export const HotDeals = [
     category: CATEGORY.DEALS,
     image: './src/assets/products/popularProducts/capsicum.svg',
     id: 6,
+    rating: 3,
   },
   {
     title: 'Green Chili',
@@ -197,6 +204,7 @@ export const HotDeals = [
     category: CATEGORY.DEALS,
     image: './src/assets/products/popularProducts/chili.svg',
     id: 7,
+    rating: 4,
   },
   {
     title: 'Big Potatoes',
@@ -204,6 +212,7 @@ export const HotDeals = [
     category: CATEGORY.DEALS,
     image: './src/assets/products/popularProducts/potatoes.svg',
     id: 8,
+    rating: 5,
   },
   {
     title: 'Corn',
@@ -211,6 +220,7 @@ export const HotDeals = [
     category: CATEGORY.DEALS,
     image: './src/assets/products/popularProducts/corn.svg',
     id: 9,
+    rating: 5,
   },
   {
     title: 'Red Chili',
@@ -218,6 +228,7 @@ export const HotDeals = [
     category: CATEGORY.DEALS,
     image: './src/assets/products/HotDeals/redChilli.svg',
     id: 8,
+    rating: 3,
   },
   {
     title: 'Red Tomatoes',
@@ -225,6 +236,7 @@ export const HotDeals = [
     category: CATEGORY.DEALS,
     image: './src/assets/products/HotDeals/tomato.svg',
     id: 9,
+    rating: 5,
   },
   {
     title: 'Surjapur Mango',
@@ -232,6 +244,7 @@ export const HotDeals = [
     category: CATEGORY.DEALS,
     image: './src/assets/products/HotDeals/mango.svg',
     id: 10,
+    rating: 4,
   },
 ];
 
