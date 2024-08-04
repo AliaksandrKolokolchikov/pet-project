@@ -1,6 +1,6 @@
 import './index.css';
 import { Route, Routes } from 'react-router-dom';
-import { MainPage } from './pages';
+import { CartPage, MainPage } from './pages';
 import { SignInPage, SignUpPage } from './pages';
 import { ROUTES } from './constants';
 import { AllCategories } from './pages/AllCategories.tsx';
@@ -13,6 +13,7 @@ function App() {
         <Route path={ROUTES.SIGN_IN} element={<SignInPage />} />
         <Route path={ROUTES.SIGN_UP} element={<SignUpPage />} />
         <Route path={ROUTES.ALL_CATEGORIES} element={<AllCategories />} />
+        <Route path={ROUTES.CART} element={<CartPage />} />
       </Routes>
     </>
   );

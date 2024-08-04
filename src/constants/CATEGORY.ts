@@ -4,4 +4,5 @@ export enum CATEGORY {
   DEALS = 'DEALS',
   FEATURED = 'FEATURED',
   TESTIMONIALS = 'TESTIMONIALS',
+  CART = 'CART',
 }

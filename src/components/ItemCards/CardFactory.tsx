@@ -1,12 +1,12 @@
 import { CATEGORY } from '../../constants';
-import { Product } from '../../types/types.tsx';
+import { Product, ProductCart } from '../../types/types.tsx';
 import { PopularCategories } from './PopularCategories/PopularCategories.tsx';
 import { PopularProducts } from './PopularProducts/PopularProducts.tsx';
 import { HotDeals } from './HotDeals/HotDeals.tsx';
 import { FeaturedProducts } from './FeaturedProducts/FeaturedProducts.tsx';
 
 type Props = {
-  product: Product;
+  product: Product | ProductCart;
   index?: number;
 };
 

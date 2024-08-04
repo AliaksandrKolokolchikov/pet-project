@@ -1,12 +1,15 @@
 import { Product } from '../../../types/types.tsx';
 import { CartWhite } from '../../Icons/Cart.tsx';
 import Rating from '@mui/material/Rating';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../../store/cart/cartSlicer.ts';
 
 interface Props {
   product: Product;
 }
 
 export const PopularProducts = ({ product }: Props) => {
+  const dispatch = useDispatch();
   return (
     <>
       <div className="flex flex-col justify-center w-[243px] h-[325px] border hover:border-[#2C742F] group cursor-pointer  font-[Poppins] ">
@@ -16,7 +19,10 @@ export const PopularProducts = ({ product }: Props) => {
         </p>
         <div className="flex justify-between ">
           <p className="text-[#1A1A1A] font-medium ml-3 ">{product.price}</p>
-          <div className="rounded-full h-[34px] w-[34px] bg-[#F2F2F2] group-hover:bg-[#00B307] mr-3 flex items-center justify-center">
+          <div
+            onClick={() => dispatch(addToCart(product))}
+            className="rounded-full h-[34px] w-[34px] bg-[#F2F2F2] group-hover:bg-[#00B307] mr-3 flex items-center justify-center"
+          >
             <CartWhite />
           </div>
         </div>

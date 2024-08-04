@@ -9,6 +9,11 @@ export interface Product {
   rating?: number;
 }
 
+export interface ProductCart extends Product {
+  subtotal: string;
+  quantity: number;
+}
+
 export interface Commentary {
   category: string;
   title: string;
