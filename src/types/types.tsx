@@ -5,6 +5,7 @@ export interface Product {
   id?: number;
   price?: string;
   isLarge?: boolean;
+  isActiveBg?: boolean;
   rating?: number;
 }
 

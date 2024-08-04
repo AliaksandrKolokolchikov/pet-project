@@ -56,7 +56,7 @@ export const CardList = [
     id: 9,
   },
   {
-    title: 'Diabetic Food',
+    title: 'Diabetic FoodIcon',
     category: CATEGORY.POPULAR,
     image: './src/assets/products/popularCategories/diabetic.svg',
     id: 10,
@@ -82,6 +82,7 @@ export const PopularProducts = [
     category: CATEGORY.PRODUCTS,
     image: './src/assets/products/popularProducts/apple.svg',
     id: 1,
+    rating: 5,
   },
   {
     title: 'Fresh Indian Malta',
@@ -89,6 +90,7 @@ export const PopularProducts = [
     category: CATEGORY.PRODUCTS,
     image: './src/assets/products/popularProducts/orange.svg',
     id: 2,
+    rating: 4,
   },
   {
     title: 'Chinese cabbage',
@@ -96,6 +98,7 @@ export const PopularProducts = [
     category: CATEGORY.PRODUCTS,
     image: './src/assets/products/popularProducts/cabbage.svg',
     id: 3,
+    rating: 5,
   },
   {
     title: 'Green Lettuce',
@@ -103,6 +106,7 @@ export const PopularProducts = [
     category: CATEGORY.PRODUCTS,
     image: './src/assets/products/popularProducts/lettuce.svg',
     id: 4,
+    rating: 4,
   },
   {
     title: 'Eggplant',
@@ -110,6 +114,7 @@ export const PopularProducts = [
     category: CATEGORY.PRODUCTS,
     image: './src/assets/products/popularProducts/eggplant.svg',
     id: 5,
+    rating: 3,
   },
   {
     title: 'Big Potatoes',
@@ -117,6 +122,7 @@ export const PopularProducts = [
     category: CATEGORY.PRODUCTS,
     image: './src/assets/products/popularProducts/potatoes.svg',
     id: 6,
+    rating: 5,
   },
   {
     title: 'Corn',
@@ -124,6 +130,7 @@ export const PopularProducts = [
     category: CATEGORY.PRODUCTS,
     image: './src/assets/products/popularProducts/corn.svg',
     id: 7,
+    rating: 5,
   },
   {
     title: 'Fresh Cauliflower',
@@ -131,6 +138,7 @@ export const PopularProducts = [
     category: CATEGORY.PRODUCTS,
     image: './src/assets/products/popularProducts/cauliflower.svg',
     id: 8,
+    rating: 4,
   },
   {
     title: 'Green Capsicum',
@@ -138,6 +146,7 @@ export const PopularProducts = [
     category: CATEGORY.PRODUCTS,
     image: './src/assets/products/popularProducts/capsicum.svg',
     id: 9,
+    rating: 4,
   },
   {
     title: 'Green Chili',
@@ -145,6 +154,7 @@ export const PopularProducts = [
     category: CATEGORY.PRODUCTS,
     image: './src/assets/products/popularProducts/chili.svg',
     id: 10,
+    rating: 3,
   },
 ];
 
@@ -255,6 +265,7 @@ export const FeaturedProducts = [
     category: CATEGORY.FEATURED,
     image: './src/assets/products/popularProducts/apple.svg',
     id: 1,
+    rating: 3,
   },
   {
     title: 'Fresh Indian Malta',
@@ -262,6 +273,7 @@ export const FeaturedProducts = [
     category: CATEGORY.FEATURED,
     image: './src/assets/products/popularProducts/orange.svg',
     id: 2,
+    rating: 4,
   },
   {
     title: 'Chinese cabbage',
@@ -269,6 +281,7 @@ export const FeaturedProducts = [
     category: CATEGORY.FEATURED,
     image: './src/assets/products/popularProducts/cabbage.svg',
     id: 3,
+    rating: 5,
   },
   {
     title: 'Green Lettuce',
@@ -276,6 +289,7 @@ export const FeaturedProducts = [
     category: CATEGORY.FEATURED,
     image: './src/assets/products/popularProducts/lettuce.svg',
     id: 4,
+    rating: 5,
   },
   {
     title: 'Eggplant',
@@ -283,5 +297,6 @@ export const FeaturedProducts = [
     category: CATEGORY.FEATURED,
     image: './src/assets/products/popularProducts/eggplant.svg',
     id: 5,
+    rating: 4,
   },
 ];

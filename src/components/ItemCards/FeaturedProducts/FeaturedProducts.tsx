@@ -1,6 +1,6 @@
 import { Product } from '../../../types/types.tsx';
-import Rating from '../../../assets/products/PopularProducts/Rating.svg';
 import { CartWhite } from '../../Icons/Cart.tsx';
+import Rating from '@mui/material/Rating';
 
 interface Props {
   product: Product;
@@ -21,7 +21,7 @@ export const FeaturedProducts = ({ product }: Props) => {
           </div>
         </div>
         <div className="ml-3">
-          <img src={Rating} alt="Rating" />
+          <Rating size="small" defaultValue={product.rating} />
         </div>
       </div>
     </>

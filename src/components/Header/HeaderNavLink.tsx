@@ -3,7 +3,7 @@ import Phone from '../../assets/Header/PhoneCall 1.svg';
 
 export const HeaderNavLink = () => {
   return (
-    <div className="flex justify-between items-center h-[60px] pl-[10%] pr-[10%] bg-gray-800 ">
+    <div className="flex justify-between items-center h-[60px] pl-[10%] pr-[10%] bg-gray-800">
       <div className="flex items-center gap-1 poppins-nav">
         <span className="hover:text-white cursor-pointer">Home</span>
         <button>

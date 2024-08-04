@@ -28,6 +28,10 @@ module.exports = {
           "url('/src/assets/products/PopularProducts/Quick View.svg')",
 
         'insta-bg': "url('/src/assets/FollowBlock/Insta.svg')",
+        'tomato-bg': "url('/src/assets/FollowBlock/tomat.svg')",
+
+        'banner-categories-bg':
+          "url('/src/assets/AllCategories/Breadcrumbs.png')",
       },
       colors: {
         'gray-opacity': 'rgba(102, 102, 102)',

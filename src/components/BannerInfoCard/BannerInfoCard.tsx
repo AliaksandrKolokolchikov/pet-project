@@ -1,6 +1,9 @@
 import { ArrowIcon } from '../Icons/ArrowIcon.tsx';
+import { TimerBanner } from './TimerBannerInfo.tsx';
 
 export const BannerInfoCard = () => {
+  const time = new Date();
+  time.setSeconds(time.getSeconds() + 8326);
   return (
     <div className="flex justify-between px-[5%] gap-2 font-[Poppins] pb-[60px]">
       <div className="bg-avocado-bg bg-cover w-[424px] h-[536px]">
@@ -10,27 +13,7 @@ export const BannerInfoCard = () => {
         <p className="text-center text-white text-[40px] font-semibold mt-4">
           Sale of the Month
         </p>
-        <div className="flex gap-4 justify-center mt-2">
-          <div className="flex flex-col">
-            <span className="text-[24px] text-white text-center">00</span>
-            <p className="text-[12px] text-white opacity-80  uppercase">Days</p>
-          </div>
-          <p className="text-[24px] text-white">:</p>
-          <div className="flex flex-col">
-            <span className="text-[24px] text-white text-center">02</span>
-            <p className="text-[12px] text-white opacity-80 uppercase">Hours</p>
-          </div>
-          <p className="text-[24px] text-white">:</p>
-          <div className="flex flex-col">
-            <span className="text-[24px] text-white text-center">18</span>
-            <p className="text-[12px] text-white opacity-80 uppercase">Mins</p>
-          </div>
-          <p className="text-[24px] text-white">:</p>
-          <div className="flex flex-col">
-            <span className="text-[24px] text-white text-center">46</span>
-            <p className="text-[12px] text-white opacity-80 uppercase">Secs</p>
-          </div>
-        </div>
+        <TimerBanner expiryTimestamp={time} />
         <button className="bg-white rounded-3xl w-[162px] h-[51px] mt-[28px] ml-[30%]">
           <div className="flex text-[#00B307] justify-center group">
             <p className="font-semibold pr-2 group-hover:text-[#2C742F]">
@@ -51,7 +34,7 @@ export const BannerInfoCard = () => {
           <span className="mr-2">Started at</span>
           <p className="text-[#FF8A00]">$79.99</p>
         </div>
-        <button className="bg-white rounded-3xl w-[162px] h-[51px] mt-[28px] ml-[30%]">
+        <button className="bg-white rounded-3xl w-[162px] h-[51px] ml-[30%]">
           <div className="flex text-[#00B307] justify-center group">
             <p className="font-semibold pr-2 group-hover:text-[#2C742F]">
               Shop now
@@ -73,7 +56,7 @@ export const BannerInfoCard = () => {
             64% OFF
           </p>
         </div>
-        <button className="bg-white rounded-3xl w-[162px] h-[51px] mt-[28px] ml-[30%]">
+        <button className="bg-white rounded-3xl w-[162px] h-[51px] ml-[30%]">
           <div className="flex text-[#00B307] justify-center group">
             <p className="font-semibold pr-2 group-hover:text-[#2C742F]">
               Shop now
