@@ -1,6 +1,11 @@
-export const LikeProduct = () => {
+type Props = {
+  onClick: () => void;
+  cssClass: string;
+};
+
+export const LikeProduct = ({ onClick, cssClass }: Props) => {
   return (
-    <>
+    <a className={cssClass}>
       <svg
         width="40.000000"
         height="40.000000"
@@ -8,6 +13,8 @@ export const LikeProduct = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
+        className="group-hover:fill-[#00B307]"
+        onClick={onClick}
       >
         <desc>Created with Pixso.</desc>
         <defs />
@@ -18,7 +25,6 @@ export const LikeProduct = () => {
           r="20.000000"
           fill="#FFFFFF"
           fillOpacity="1.000000"
-          className="hover:fill-[#00B307]"
         />
         <circle
           id="Container"
@@ -37,7 +43,6 @@ export const LikeProduct = () => {
           transform="translate(10.000000 10.000000)"
           fill="#FFFFFF"
           fillOpacity="0"
-          className="hover:fill-[#00B307]"
         />
         <path
           id="Vector"
@@ -45,9 +50,9 @@ export const LikeProduct = () => {
           stroke="#1A1A1A"
           strokeOpacity="1.000000"
           strokeWidth="1.500000"
-          className="hover:stroke-white"
+          className="stroke-white"
         />
       </svg>
-    </>
+    </a>
   );
 };

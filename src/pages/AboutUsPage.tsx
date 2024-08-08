@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Footer, Header } from '../components';
 import { CompanyBlock } from '../components/CompanyBlock/CompanyBlock.tsx';
@@ -23,6 +23,7 @@ import home from '../assets/AllCategories/homeAllCat.svg';
 
 export const AboutUsPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   return (
     <>
       <Header />
@@ -35,7 +36,9 @@ export const AboutUsPage = () => {
             alt="home"
           />
           <img src={arrowRight} alt="arrowRight" />
-          <p className="text-[#00B307] cursor-pointer">About</p>
+          <p className="text-[#00B307] cursor-pointer capitalize">
+            {location.pathname.replace('/', '')}
+          </p>
         </div>
       </div>
       <div className="flex px-[3%]">

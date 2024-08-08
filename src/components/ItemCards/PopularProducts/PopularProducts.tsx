@@ -4,6 +4,7 @@ import Rating from '@mui/material/Rating';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../store/cart/cartSlicer.ts';
 import { addToWish } from '../../../store/wish/wishSlicer.ts';
+import { LikeProduct } from '../../Icons/Products/LikeProduct.tsx';
 
 interface Props {
   product: Product;
@@ -16,14 +17,16 @@ export const PopularProducts = ({ product }: Props) => {
       <div className="flex flex-col justify-center w-[243px] h-[325px] border hover:border-[#2C742F] group cursor-pointer  font-[Poppins] ">
         <div className="relative group">
           <img src={product.image} alt="product" />
-          <div className="group-hover:bg-no-repeat absolute top-[5px] left-[185px]">
-            <a
-              onClick={() => dispatch(addToWish(product))}
-              className="group-hover:bg-addToWishList-bg absolute p-5 hover:bg-"
-            ></a>
-          </div>
-          <div className="group-hover:bg-no-repeat absolute top-[50px] left-[185px]">
-            <a className="group-hover:bg-quickView-bg absolute p-5"></a>
+          <div className="absolute top-[5px] left-[185px] flex flex-col">
+            <div>
+              <LikeProduct
+                onClick={() => dispatch(addToWish(product))}
+                cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group"
+              ></LikeProduct>
+            </div>
+            <div className="bg-no-repeat bg-quickView-bg w-[40px] h-[40px] hidden group-hover:block">
+              <a className=" width-[40px] height-[40px]"></a>
+            </div>
           </div>
         </div>
 

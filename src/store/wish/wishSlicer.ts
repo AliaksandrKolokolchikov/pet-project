@@ -1,6 +1,5 @@
 import { Product } from '../../types/types.tsx';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CATEGORY } from '../../constants';
 
 export interface WishState {
   products: Product[];
@@ -26,7 +25,6 @@ export const wishSlice = createSlice({
       } else {
         state.products.push({
           ...action.payload,
-          category: CATEGORY.CART,
         });
       }
     },
@@ -34,14 +32,7 @@ export const wishSlice = createSlice({
       const existingWishIndex = state.products.findIndex(
         (item) => item.title === action.payload.title,
       );
-      if (existingWishIndex >= 1) {
-        const existingProduct = state.products[existingWishIndex];
-        state.products[existingWishIndex] = {
-          ...existingProduct,
-        };
-      } else {
-        state.products.splice(existingWishIndex, 1);
-      }
+      state.products.splice(existingWishIndex, 1);
     },
   },
 });

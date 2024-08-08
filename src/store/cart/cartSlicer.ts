@@ -87,24 +87,18 @@ export const cartSlice = createSlice({
       state.countOfProducts = state.countOfProducts - action.payload.quantity;
       state.price = subtractPrices(state.price, action.payload.subtotal);
 
-      if (deleteProductIndex >= 0) {
-        const existingProduct = state.products[deleteProductIndex];
+      const existingProduct = state.products[deleteProductIndex];
 
-        if (existingProduct.quantity > 1) {
-          const updatedQuantity = existingProduct.quantity - 1;
-          const updatedSubtotal = subtractPrices(
-            existingProduct.subtotal,
-            existingProduct.price || '0',
-          );
+      const updatedSubtotal = subtractPrices(
+        existingProduct.subtotal,
+        existingProduct.price || '0',
+      );
 
-          state.products[deleteProductIndex] = {
-            ...existingProduct,
-            quantity: updatedQuantity,
-            subtotal: updatedSubtotal,
-          };
-        }
-        state.products.splice(deleteProductIndex, 1);
-      }
+      state.products[deleteProductIndex] = {
+        ...existingProduct,
+        subtotal: updatedSubtotal,
+      };
+      state.products.splice(deleteProductIndex, 1);
     },
   },
 });

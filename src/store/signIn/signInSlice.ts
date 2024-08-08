@@ -14,14 +14,14 @@ export const signInSlice = createSlice({
   name: 'signIn',
   initialState,
   reducers: {
-    emailChanged: (state: InputState, action: PayloadAction<string>) => {
+    emailChange: (state: InputState, action: PayloadAction<string>) => {
       state.emailInput = action.payload;
     },
-    passwordChanged: (state: InputState, action: PayloadAction<string>) => {
+    passwordChange: (state: InputState, action: PayloadAction<string>) => {
       state.passwordInput = action.payload;
     },
   },
 });
 
-export const { emailChanged, passwordChanged } = signInSlice.actions;
+export const { emailChange, passwordChange } = signInSlice.actions;
 export default signInSlice.reducer;
