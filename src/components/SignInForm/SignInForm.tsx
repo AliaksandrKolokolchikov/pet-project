@@ -5,6 +5,8 @@ import validator from 'validator';
 import eyeIcon from '../../assets/SignIn/eye.svg';
 import { getUserByCredentials } from '../../db.ts';
 import { ROUTES } from '../../constants';
+import { useDispatch } from 'react-redux';
+import { emailChange, passwordChange } from '../../store/signIn/signInSlice.ts';
 
 export const SignInForm = () => {
   const [email, setEmail] = useState('');
@@ -15,7 +17,10 @@ export const SignInForm = () => {
   const [passwordError, setPasswordError] = useState('');
   const [emailValid, setEmailValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
+
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const validateEmail = (email: string) => {
     if (!validator.isEmail(email)) {
@@ -49,6 +54,8 @@ export const SignInForm = () => {
     validateEmail(email);
     validatePassword(password);
     await getUserByCredentials(email, password);
+    dispatch(emailChange(email));
+    dispatch(passwordChange(password));
     navigate('/');
   };
 

@@ -1,16 +1,47 @@
 import Arrow from '../../assets/Header/Arrow down.svg';
-import Phone from '../../assets/Header/PhoneCall 1.svg';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const HeaderNavLink = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   return (
-    <div className="flex justify-between items-center h-[60px] pl-[10%] pr-[10%] bg-gray-800 ">
+    <div
+      className={`${
+        location.pathname === '/cart' ||
+        location.pathname === '/wishlist' ||
+        location.pathname === '/checkout' ||
+        location.pathname === '/aboutUs'
+          ? `bg-white text-[#666666] hover:text-[#00B307]`
+          : `bg-[bg-gray-800]`
+      } flex justify-between items-center h-[60px] pl-[10%] pr-[10%] bg-gray-800 `}
+    >
       <div className="flex items-center gap-1 poppins-nav">
-        <span className="hover:text-white cursor-pointer">Home</span>
+        <span
+          className={`${
+            location.pathname === '/cart' ||
+            location.pathname === '/wishlist' ||
+            location.pathname === '/checkout' ||
+            location.pathname === '/aboutUs'
+              ? `hover:text-[#00B307]`
+              : `hover:text-white `
+          }  cursor-pointer`}
+        >
+          Home
+        </span>
         <button>
           <img src={Arrow} alt="Arrow down" />
         </button>
         <div className="flex gap-1">
-          <span className="pl-[32px] hover:text-white cursor-pointer">
+          <span
+            className={`${
+              location.pathname === '/cart' ||
+              location.pathname === '/wishlist' ||
+              location.pathname === '/checkout' ||
+              location.pathname === '/aboutUs'
+                ? `hover:text-[#00B307]`
+                : `hover:text-white`
+            }  cursor-pointer ml-8`}
+          >
             Shop
           </span>
           <button>
@@ -18,7 +49,16 @@ export const HeaderNavLink = () => {
           </button>
         </div>
         <div className="flex gap-1">
-          <span className="pl-[32px] hover:text-white cursor-pointer">
+          <span
+            className={`${
+              location.pathname === '/cart' ||
+              location.pathname === '/wishlist' ||
+              location.pathname === '/checkout' ||
+              location.pathname === '/aboutUs'
+                ? `hover:text-[#00B307]`
+                : `hover:text-white`
+            } cursor-pointer ml-8`}
+          >
             Pages
           </span>
           <button>
@@ -26,7 +66,16 @@ export const HeaderNavLink = () => {
           </button>
         </div>
         <div className="flex gap-1">
-          <span className="pl-[32px] hover:text-white cursor-pointer">
+          <span
+            className={`${
+              location.pathname === '/cart' ||
+              location.pathname === '/wishlist' ||
+              location.pathname === '/checkout' ||
+              location.pathname === '/aboutUs'
+                ? `hover:text-[#00B307]`
+                : `hover:text-white`
+            }  cursor-pointer ml-8`}
+          >
             Blog
           </span>
           <button>
@@ -34,19 +83,58 @@ export const HeaderNavLink = () => {
           </button>
         </div>
         <div className="flex">
-          <span className="pl-[32px] hover:text-white cursor-pointer">
+          <span
+            onClick={() => navigate('/aboutUs')}
+            className={`${
+              location.pathname === '/cart' ||
+              location.pathname === '/wishlist' ||
+              location.pathname === '/checkout' ||
+              location.pathname === '/aboutUs'
+                ? `hover:text-[#00B307]`
+                : `hover:text-white`
+            }  cursor-pointer ml-8`}
+          >
             About Us
           </span>
         </div>
         <div className="flex">
-          <span className="pl-[32px] hover:text-white cursor-pointer">
+          <span
+            className={`${
+              location.pathname === '/cart' ||
+              location.pathname === '/wishlist' ||
+              location.pathname === '/checkout' ||
+              location.pathname === '/aboutUs'
+                ? `hover:text-[#00B307]`
+                : `hover:text-white`
+            } cursor-pointer ml-8`}
+          >
             Contact Us
           </span>
         </div>
       </div>
       <div className="flex gap-2 poppins-nav items-center">
-        <img src={Phone} alt="Phone" />
-        <span className="text-white cursor-pointer">(219) 555-014</span>
+        <div
+          className={`${
+            location.pathname === '/cart' ||
+            location.pathname === '/wishlist' ||
+            location.pathname === '/checkout' ||
+            location.pathname === '/aboutUs'
+              ? `bg-phone-black w-[25px] h-[25px] bg-no-repeat flex justify-center`
+              : `bg-phone-white w-[30px] h-[30px] `
+          }`}
+        ></div>
+        <span
+          className={`${
+            location.pathname === '/cart' ||
+            location.pathname === '/wishlist' ||
+            location.pathname === '/checkout' ||
+            location.pathname === '/aboutUs'
+              ? `hover:text-[#00B307] text-[#1A1A1A]`
+              : `hover:text-white text-white`
+          } cursor-pointer `}
+        >
+          (219) 555-014
+        </span>
       </div>
     </div>
   );
