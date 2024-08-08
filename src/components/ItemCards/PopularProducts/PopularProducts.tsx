@@ -1,8 +1,9 @@
 import { Product } from '../../../types/types.tsx';
-import { CartWhite } from '../../Icons/Cart.tsx';
+import { CartWhite } from '../../Icons/Products/Cart.tsx';
 import Rating from '@mui/material/Rating';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../store/cart/cartSlicer.ts';
+import { addToWish } from '../../../store/wish/wishSlicer.ts';
 
 interface Props {
   product: Product;
@@ -13,7 +14,19 @@ export const PopularProducts = ({ product }: Props) => {
   return (
     <>
       <div className="flex flex-col justify-center w-[243px] h-[325px] border hover:border-[#2C742F] group cursor-pointer  font-[Poppins] ">
-        <img src={product.image} alt="product" />
+        <div className="relative group">
+          <img src={product.image} alt="product" />
+          <div className="group-hover:bg-no-repeat absolute top-[5px] left-[185px]">
+            <a
+              onClick={() => dispatch(addToWish(product))}
+              className="group-hover:bg-addToWishList-bg absolute p-5 hover:bg-"
+            ></a>
+          </div>
+          <div className="group-hover:bg-no-repeat absolute top-[50px] left-[185px]">
+            <a className="group-hover:bg-quickView-bg absolute p-5"></a>
+          </div>
+        </div>
+
         <p className="text-[#4D4D4D] text-[14px] ml-3 group-hover:text-[#2C742F]">
           {product.title}
         </p>

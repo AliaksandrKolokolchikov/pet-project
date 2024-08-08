@@ -1,5 +1,8 @@
 export { MainPage } from './MainPage';
 export { SignInPage } from './SignIn';
 export { SignUpPage } from './SignUp';
-export { AllCategories } from './AllCategories';
+export { AllCategoriesPage } from './AllCategoriesPage.tsx';
 export { CartPage } from './CartPage';
+export { WishListPage } from './WishListPage';
+export { CheckoutPage } from './CheckoutPage';
+export { AboutUsPage } from './AboutUsPage';

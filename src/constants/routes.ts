@@ -5,4 +5,7 @@ export enum ROUTES {
   SIGN_UP = '/signUp',
   ALL_CATEGORIES = '/allCategories',
   CART = '/cart',
+  WISHLIST = '/wishlist',
+  CHECKOUT = '/checkout',
+  ABOUT_US = 'aboutUs',
 }

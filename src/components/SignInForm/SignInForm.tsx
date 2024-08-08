@@ -5,6 +5,11 @@ import validator from 'validator';
 import eyeIcon from '../../assets/SignIn/eye.svg';
 import { getUserByCredentials } from '../../db.ts';
 import { ROUTES } from '../../constants';
+import { useDispatch } from 'react-redux';
+import {
+  emailChanged,
+  passwordChanged,
+} from '../../store/signIn/signInSlice.ts';
 
 export const SignInForm = () => {
   const [email, setEmail] = useState('');
@@ -15,7 +20,20 @@ export const SignInForm = () => {
   const [passwordError, setPasswordError] = useState('');
   const [emailValid, setEmailValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
+
   const navigate = useNavigate();
+
+  // const { emailInput, passwordInput } = useSelector(
+  //   (state: RootState) => state.signIn,
+  // );
+  const dispatch = useDispatch();
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(emailChanged(e.target.value));
+  };
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(passwordChanged(e.target.value));
+  };
 
   const validateEmail = (email: string) => {
     if (!validator.isEmail(email)) {
@@ -70,6 +88,7 @@ export const SignInForm = () => {
             onChange={(e) => {
               setEmail(e.target.value);
               validateEmail(e.target.value);
+              handleEmailChange(e);
             }}
             className={`w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 ${
               emailError
@@ -98,6 +117,7 @@ export const SignInForm = () => {
             onChange={(e) => {
               setPassword(e.target.value);
               validatePassword(e.target.value);
+              handlePasswordChange(e);
             }}
             className={`w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 ${
               passwordError

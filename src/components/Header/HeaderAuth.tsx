@@ -1,13 +1,23 @@
 import Map from '../../assets/Header/Map Pin.svg';
 import Arrow from '../../assets/Header/Arrow down.svg';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const HeaderAuth = () => {
+  const location = useLocation();
   const navigate = useNavigate();
 
   return (
     <>
-      <div className="flex justify-between items-center border-b-2 h-[42px] pl-[10%] pr-[10%] poppins-md">
+      <div
+        className={`${
+          location.pathname === '/cart' ||
+          location.pathname === '/wishlist' ||
+          location.pathname === '/checkout' ||
+          location.pathname === '/aboutUs'
+            ? `bg-[#333333] text-[#B3B3B3]`
+            : `bg-white`
+        } flex justify-between items-center border-b-2 h-[42px] pl-[10%] pr-[10%] poppins-md`}
+      >
         <div className="flex gap-2  items-center">
           <img src={Map} alt="Your location" />
           <div>Store Location: Lincoln- 344, Illinois, Chicago, USA</div>

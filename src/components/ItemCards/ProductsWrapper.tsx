@@ -14,7 +14,7 @@ export const ProductWrapper = ({ title, children, isGrid = false }: Props) => {
     <div className="px-[3%] font-[Poppins] w-full">
       <div>
         <div
-          className={`${isGrid ? `px-[0.10%]` : `px-[5%]`} flex items-center justify-between px-[5%] pb-5`}
+          className={`${isGrid ? `px-[1%]` : `px-[5%]`} flex items-center justify-between px-[5%] pb-5`}
         >
           <span className="text-[32px] font-semibold ">{title}</span>
           <Link to={ROUTES.ALL_CATEGORIES}>

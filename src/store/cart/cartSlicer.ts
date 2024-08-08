@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+
 import { Product, ProductCart } from '../../types/types.tsx';
 import { addPrices, subtractPrices } from '../utils.ts';
 import { CATEGORY } from '../../constants';
@@ -79,8 +80,34 @@ export const cartSlice = createSlice({
         }
       }
     },
+    deleteFromCart: (state, action: PayloadAction<ProductCart>) => {
+      const deleteProductIndex = state.products.findIndex(
+        (item) => item.title === action.payload.title,
+      );
+      state.countOfProducts = state.countOfProducts - action.payload.quantity;
+      state.price = subtractPrices(state.price, action.payload.subtotal);
+
+      if (deleteProductIndex >= 0) {
+        const existingProduct = state.products[deleteProductIndex];
+
+        if (existingProduct.quantity > 1) {
+          const updatedQuantity = existingProduct.quantity - 1;
+          const updatedSubtotal = subtractPrices(
+            existingProduct.subtotal,
+            existingProduct.price || '0',
+          );
+
+          state.products[deleteProductIndex] = {
+            ...existingProduct,
+            quantity: updatedQuantity,
+            subtotal: updatedSubtotal,
+          };
+        }
+        state.products.splice(deleteProductIndex, 1);
+      }
+    },
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, deleteFromCart } = cartSlice.actions;
 export default cartSlice.reducer;

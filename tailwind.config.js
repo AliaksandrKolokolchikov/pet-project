@@ -12,6 +12,9 @@ module.exports = {
         'big-bg': "url('src/assets/MainPage/Banner Big.svg')",
         'down-bg': "url('src/assets/MainPage/BG.svg')",
 
+        'phone-black': "url('src/assets/Header/PhoneBlack.svg')",
+        'phone-white': "url('src/assets/Header/PhoneCall 1.svg')",
+
         'avocado-bg': "url('src/assets/BannerInfo/Avocado.svg')",
         'meat-bg': "url('src/assets/BannerInfo/Meat.svg')",
         'fruit-bg': "url('src/assets/BannerInfo/Fruit.svg')",
@@ -32,6 +35,8 @@ module.exports = {
 
         'banner-categories-bg':
           "url('/src/assets/AllCategories/Breadcrumbs.png')",
+
+        'withBag-bg': "url('/src/assets/AboutUs/withCart.svg')",
       },
       colors: {
         'gray-opacity': 'rgba(102, 102, 102)',
