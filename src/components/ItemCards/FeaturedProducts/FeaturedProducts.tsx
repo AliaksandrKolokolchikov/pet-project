@@ -7,6 +7,8 @@ import { addToCart } from '../../../store/cart/cartSlicer.ts';
 import { addToWish } from '../../../store/wish/wishSlicer.ts';
 
 import Rating from '@mui/material/Rating';
+import { LikeProduct } from '../../Icons/Products/LikeProduct.tsx';
+import { QuickView } from '../../Icons/Products/QuickView.tsx';
 
 interface Props {
   product: Product;
@@ -19,14 +21,14 @@ export const FeaturedProducts = ({ product }: Props) => {
       <div className="flex flex-col justify-center max-w-[243px] max-h-[325px] border hover:border-[#2C742F] group cursor-pointer font-[Poppins]">
         <div className="relative group">
           <img className=" " src={product.image} alt="product" />
-          <div className="group-hover:bg-no-repeat absolute top-[10px] left-[185px]">
-            <a
-              onClick={() => dispatch(addToWish(product))}
-              className="group-hover:bg-addToWishList-bg absolute p-5"
-            ></a>
-          </div>
-          <div className="group-hover:bg-no-repeat absolute top-[55px] left-[185px]">
-            <a className="group-hover:bg-quickView-bg absolute p-5" href=""></a>
+          <div className="absolute top-[10px] left-[185px] flex flex-col">
+            <div>
+              <LikeProduct
+                onClick={() => dispatch(addToWish(product))}
+                cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group"
+              ></LikeProduct>
+            </div>
+            <QuickView cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group"></QuickView>
           </div>
         </div>
 

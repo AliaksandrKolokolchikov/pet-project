@@ -41,7 +41,7 @@ export const AboutUsPage = () => {
           </p>
         </div>
       </div>
-      <div className="flex px-[3%]">
+      <div className="flex pl-[5%] pr-[3%]">
         <div className="flex flex-col font-Poppins pt-[176px]">
           <p className="font-semibold text-[56px] max-w-[607px] mb-8 ">
             100% Trusted Organic Food Store
@@ -130,7 +130,7 @@ export const AboutUsPage = () => {
                 <div className="pl-4">
                   <p className="text-[18px] font-medium">100% Organic Food</p>
                   <p className="text-[14px] text-[#808080] mt-2">
-                    100% healthy & Fresh food.{' '}
+                    100% healthy & Fresh food.
                   </p>
                 </div>
               </div>
@@ -138,7 +138,8 @@ export const AboutUsPage = () => {
           </div>
         </div>
       </div>
-      <div className="font-Poppins flex">
+
+      <div className="font-Poppins flex pl-[5%]">
         <div className="flex flex-col max-w-[532px] mr-[29px]">
           <p className="text-[48px] font-semibold mb-6 pt-[160px]">
             We Delivered, You Enjoy Your Order.

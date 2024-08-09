@@ -2,10 +2,11 @@ import { Footer, Header } from '../components';
 import home from '../assets/AllCategories/homeAllCat.svg';
 import arrowRight from '../assets/AllCategories/CoupleArrowRight.svg';
 import { WishListWrapper } from '../components/ItemCards/WishList/WishListWrapper.tsx';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const WishListPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   return (
     <>
       <Header />
@@ -18,7 +19,9 @@ export const WishListPage = () => {
             alt="home"
           />
           <img src={arrowRight} alt="arrowRight" />
-          <p className="text-[#00B307] cursor-pointer">Wishlist</p>
+          <p className="text-[#00B307] cursor-pointer capitalize">
+            {location.pathname.replace('/', '')}
+          </p>
         </div>
       </div>
       <WishListWrapper />

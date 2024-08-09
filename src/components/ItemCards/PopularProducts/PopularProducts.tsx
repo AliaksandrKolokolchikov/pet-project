@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../store/cart/cartSlicer.ts';
 import { addToWish } from '../../../store/wish/wishSlicer.ts';
 import { LikeProduct } from '../../Icons/Products/LikeProduct.tsx';
+import { QuickView } from '../../Icons/Products/QuickView.tsx';
 
 interface Props {
   product: Product;
@@ -24,9 +25,7 @@ export const PopularProducts = ({ product }: Props) => {
                 cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group"
               ></LikeProduct>
             </div>
-            <div className="bg-no-repeat bg-quickView-bg w-[40px] h-[40px] hidden group-hover:block">
-              <a className=" width-[40px] height-[40px]"></a>
-            </div>
+            <QuickView cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group"></QuickView>
           </div>
         </div>
 

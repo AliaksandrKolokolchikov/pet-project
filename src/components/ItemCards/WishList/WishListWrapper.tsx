@@ -19,7 +19,7 @@ export const WishListWrapper = () => {
             <div className="border-b max-w-[1320px] h-[45px] pb-2 font-[Poppins] text-[#808080] text-[14px]">
               <div className="flex  uppercase px-5 py-3">
                 <span>Product</span>
-                <span className="pl-[410px] pr-[270px]">Price</span>
+                <span className="pl-[445px] pr-[230px]">Price</span>
                 <span>Stock Status</span>
               </div>
             </div>

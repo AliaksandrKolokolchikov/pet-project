@@ -33,7 +33,7 @@ export const LikeProduct = ({ onClick, cssClass }: Props) => {
           r="19.500000"
           stroke="#F2F2F2"
           strokeOpacity="1.000000"
-          strokeWidth="1.000000"
+          strokeWidth="1.500000"
           className="hover:stroke-[#00B307]"
         />
         <rect
@@ -43,6 +43,7 @@ export const LikeProduct = ({ onClick, cssClass }: Props) => {
           transform="translate(10.000000 10.000000)"
           fill="#FFFFFF"
           fillOpacity="0"
+          className="group-hover:fill-[#00B307]"
         />
         <path
           id="Vector"

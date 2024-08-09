@@ -19,7 +19,7 @@ export const WishListItem = ({ product }: Props) => {
             alt="product"
             className="max-w-[100px] max-h-[100px] mr-4 my-3"
           />
-          <span className="">{product.title}</span>
+          <span className="min-w-[150px]">{product.title}</span>
         </div>
         <span className="text-center">{product.price}</span>
 

@@ -3,9 +3,9 @@ export enum ROUTES {
   MAIN_NESTED = '/*',
   SIGN_IN = '/signIn',
   SIGN_UP = '/signUp',
-  ALL_CATEGORIES = '/allCategories',
+  ALL_CATEGORIES = '/all-categories',
   CART = '/cart',
   WISHLIST = '/wishlist',
   CHECKOUT = '/checkout',
-  ABOUT_US = 'aboutUs',
+  ABOUT_US = '/about',
 }

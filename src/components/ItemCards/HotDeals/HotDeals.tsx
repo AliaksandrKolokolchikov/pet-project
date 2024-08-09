@@ -6,6 +6,8 @@ import Rating from '@mui/material/Rating';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../store/cart/cartSlicer.ts';
 import { addToWish } from '../../../store/wish/wishSlicer.ts';
+import { LikeProduct } from '../../Icons/Products/LikeProduct.tsx';
+import { QuickView } from '../../Icons/Products/QuickView.tsx';
 
 interface Props {
   product: Product;
@@ -23,12 +25,14 @@ export const HotDeals = ({ product }: Props) => {
           <div className="flex flex-col justify-center border hover:border-[#2C742F] group cursor-pointer font-[Poppins]">
             <img src={product.image} alt="product" />
             <div className="flex px-6">
-              <div
-                onClick={() => dispatch(addToWish(product))}
-                className="bg-addToWishList-bg w-[46px] bg-no-repeat"
-              ></div>
-              <button className="bg-[#00B307] w-[371px] h-[45px] mx-2 rounded-full">
-                <div className="flex justify-center items-center">
+              <div>
+                <LikeProduct
+                  onClick={() => dispatch(addToWish(product))}
+                  cssClass="mb-1 w-[40px] h-[40px] hidden group-hover:block group-hover:mr-2 group"
+                ></LikeProduct>
+              </div>
+              <button className="bg-[#00B307] w-[371px] h-[45px] ml-[50px] group-hover:ml-0 rounded-full ">
+                <div className="flex justify-center items-center group-hover:p-0">
                   <p
                     onClick={() => dispatch(addToCart(product))}
                     className="font-semibold text-[14px] text-white mr-3"
@@ -38,7 +42,9 @@ export const HotDeals = ({ product }: Props) => {
                   <CartWhite />
                 </div>
               </button>
-              <div className="bg-quickView-bg w-[46px] bg-no-repeat"></div>
+              <div className="">
+                <QuickView cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group-hover:ml-2 group"></QuickView>
+              </div>
             </div>
             <p className="text-[#4D4D4D] text-[18px] mt-[18px] text-center group-hover:text-[#2C742F]">
               {product.title}

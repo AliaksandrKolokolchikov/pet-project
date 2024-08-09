@@ -10,7 +10,7 @@ export const HeaderNavLink = () => {
         location.pathname === '/cart' ||
         location.pathname === '/wishlist' ||
         location.pathname === '/checkout' ||
-        location.pathname === '/aboutUs'
+        location.pathname === '/about'
           ? `bg-white text-[#666666] hover:text-[#00B307]`
           : `bg-[bg-gray-800]`
       } flex justify-between items-center h-[60px] pl-[10%] pr-[10%] bg-gray-800 `}
@@ -21,7 +21,7 @@ export const HeaderNavLink = () => {
             location.pathname === '/cart' ||
             location.pathname === '/wishlist' ||
             location.pathname === '/checkout' ||
-            location.pathname === '/aboutUs'
+            location.pathname === '/about'
               ? `hover:text-[#00B307]`
               : `hover:text-white `
           }  cursor-pointer`}
@@ -37,7 +37,7 @@ export const HeaderNavLink = () => {
               location.pathname === '/cart' ||
               location.pathname === '/wishlist' ||
               location.pathname === '/checkout' ||
-              location.pathname === '/aboutUs'
+              location.pathname === '/about'
                 ? `hover:text-[#00B307]`
                 : `hover:text-white`
             }  cursor-pointer ml-8`}
@@ -54,7 +54,7 @@ export const HeaderNavLink = () => {
               location.pathname === '/cart' ||
               location.pathname === '/wishlist' ||
               location.pathname === '/checkout' ||
-              location.pathname === '/aboutUs'
+              location.pathname === '/about'
                 ? `hover:text-[#00B307]`
                 : `hover:text-white`
             } cursor-pointer ml-8`}
@@ -71,7 +71,7 @@ export const HeaderNavLink = () => {
               location.pathname === '/cart' ||
               location.pathname === '/wishlist' ||
               location.pathname === '/checkout' ||
-              location.pathname === '/aboutUs'
+              location.pathname === '/about'
                 ? `hover:text-[#00B307]`
                 : `hover:text-white`
             }  cursor-pointer ml-8`}
@@ -84,12 +84,12 @@ export const HeaderNavLink = () => {
         </div>
         <div className="flex">
           <span
-            onClick={() => navigate('/aboutUs')}
+            onClick={() => navigate('/about')}
             className={`${
               location.pathname === '/cart' ||
               location.pathname === '/wishlist' ||
               location.pathname === '/checkout' ||
-              location.pathname === '/aboutUs'
+              location.pathname === '/about'
                 ? `hover:text-[#00B307]`
                 : `hover:text-white`
             }  cursor-pointer ml-8`}
@@ -103,7 +103,7 @@ export const HeaderNavLink = () => {
               location.pathname === '/cart' ||
               location.pathname === '/wishlist' ||
               location.pathname === '/checkout' ||
-              location.pathname === '/aboutUs'
+              location.pathname === '/about'
                 ? `hover:text-[#00B307]`
                 : `hover:text-white`
             } cursor-pointer ml-8`}
@@ -118,7 +118,7 @@ export const HeaderNavLink = () => {
             location.pathname === '/cart' ||
             location.pathname === '/wishlist' ||
             location.pathname === '/checkout' ||
-            location.pathname === '/aboutUs'
+            location.pathname === '/about'
               ? `bg-phone-black w-[25px] h-[25px] bg-no-repeat flex justify-center`
               : `bg-phone-white w-[30px] h-[30px] `
           }`}
@@ -128,7 +128,7 @@ export const HeaderNavLink = () => {
             location.pathname === '/cart' ||
             location.pathname === '/wishlist' ||
             location.pathname === '/checkout' ||
-            location.pathname === '/aboutUs'
+            location.pathname === '/about'
               ? `hover:text-[#00B307] text-[#1A1A1A]`
               : `hover:text-white text-white`
           } cursor-pointer `}
