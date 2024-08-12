@@ -1,6 +1,15 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import Arrow from '../../assets/Header/Arrow down.svg';
-import { Link } from './Link.tsx';
+import { HeaderLink } from './HeaderLink.tsx';
+import { ROUTES } from '../../constants';
+
+const locationRoutes = [
+  ROUTES.CART,
+  ROUTES.WISHLIST,
+  ROUTES.CHECKOUT,
+  ROUTES.ABOUT_US,
+  ROUTES.CONTACT,
+];
 
 export const HeaderNavLink = () => {
   const navigate = useNavigate();
@@ -8,11 +17,7 @@ export const HeaderNavLink = () => {
   return (
     <div
       className={`${
-        location.pathname === '/cart' ||
-        location.pathname === '/wishlist' ||
-        location.pathname === '/checkout' ||
-        location.pathname === '/about' ||
-        location.pathname === '/contact'
+        locationRoutes.includes(location.pathname as ROUTES)
           ? `bg-white text-[#666666] hover:text-[#00B307]`
           : `bg-[bg-gray-800]`
       } flex justify-between items-center h-[60px] pl-[10%] pr-[10%] bg-gray-800 `}
@@ -20,11 +25,7 @@ export const HeaderNavLink = () => {
       <div className="flex items-center gap-1 poppins-nav">
         <button
           className={`${
-            location.pathname === '/cart' ||
-            location.pathname === '/wishlist' ||
-            location.pathname === '/checkout' ||
-            location.pathname === '/about' ||
-            location.pathname === '/contact'
+            locationRoutes.includes(location.pathname as ROUTES)
               ? `hover:text-[#00B307]`
               : `hover:text-white `
           }  cursor-pointer`}
@@ -35,53 +36,45 @@ export const HeaderNavLink = () => {
           <img src={Arrow} alt="Arrow down" />
         </button>
         <div className="flex gap-1">
-          <Link>Home</Link>
+          <HeaderLink>Home</HeaderLink>
           <button>
             <img src={Arrow} alt="Arrow down" />
           </button>
         </div>
         <div className="flex gap-1">
-          <Link>Pages</Link>
+          <HeaderLink>Pages</HeaderLink>
           <button>
             <img src={Arrow} alt="Arrow down" />
           </button>
         </div>
         <div className="flex gap-1">
           <span>
-            <Link>Blog</Link>
+            <HeaderLink>Blog</HeaderLink>
           </span>
           <button>
             <img src={Arrow} alt="Arrow down" />
           </button>
         </div>
         <span onClick={() => navigate('/about')}>
-          <Link> About Us</Link>
+          <HeaderLink> About Us</HeaderLink>
         </span>
         <div className="flex">
           <span onClick={() => navigate('/contact')}>
-            <Link>Contact Us</Link>
+            <HeaderLink>Contact Us</HeaderLink>
           </span>
         </div>
       </div>
       <div className="flex gap-2 poppins-nav items-center">
         <div
           className={`${
-            location.pathname === '/cart' ||
-            location.pathname === '/wishlist' ||
-            location.pathname === '/checkout' ||
-            location.pathname === '/about' ||
-            location.pathname === '/contact'
+            locationRoutes.includes(location.pathname as ROUTES)
               ? `bg-phone-black w-[25px] h-[25px] bg-no-repeat flex justify-center`
               : `bg-phone-white w-[30px] h-[30px] `
           }`}
         ></div>
         <span
           className={`${
-            location.pathname === '/cart' ||
-            location.pathname === '/wishlist' ||
-            location.pathname === '/checkout' ||
-            location.pathname === '/about' ||
-            location.pathname === '/contact'
+            locationRoutes.includes(location.pathname as ROUTES)
               ? `hover:text-[#00B307] text-[#1A1A1A]`
               : `hover:text-white text-white`
           } cursor-pointer `}
