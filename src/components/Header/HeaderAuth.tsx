@@ -1,6 +1,7 @@
 import Map from '../../assets/Header/Map Pin.svg';
 import Arrow from '../../assets/Header/Arrow down.svg';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { isSpecialRoute } from '../../utils.ts';
 
 export const HeaderAuth = () => {
   const location = useLocation();
@@ -10,11 +11,7 @@ export const HeaderAuth = () => {
     <>
       <div
         className={`${
-          location.pathname === '/cart' ||
-          location.pathname === '/wishlist' ||
-          location.pathname === '/checkout' ||
-          location.pathname === '/aboutUs' ||
-          location.pathname === '/contact'
+          isSpecialRoute(location.pathname)
             ? `bg-[#333333] text-[#B3B3B3]`
             : `bg-white`
         } flex justify-between items-center border-b-2 h-[42px] pl-[10%] pr-[10%] poppins-md`}
