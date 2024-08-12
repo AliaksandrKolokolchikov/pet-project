@@ -13,7 +13,8 @@ export const HeaderAuth = () => {
           location.pathname === '/cart' ||
           location.pathname === '/wishlist' ||
           location.pathname === '/checkout' ||
-          location.pathname === '/aboutUs'
+          location.pathname === '/aboutUs' ||
+          location.pathname === '/contact'
             ? `bg-[#333333] text-[#B3B3B3]`
             : `bg-white`
         } flex justify-between items-center border-b-2 h-[42px] pl-[10%] pr-[10%] poppins-md`}

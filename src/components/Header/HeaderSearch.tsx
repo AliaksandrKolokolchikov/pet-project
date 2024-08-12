@@ -5,12 +5,12 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { HeaderIcon } from '../Icons/Header/HeaderIcon.tsx';
 import { HeartIcon } from '../Icons/Header/HeartIcon.tsx';
-import { useState } from 'react';
 import { CartPopUpWrapper } from '../ItemCards/CartPopUp/CartPopUpWrapper.tsx';
 import { Close } from '../Icons/Products/Close.tsx';
+import { useOutsideClickListener } from '../../hooks/useOutsideClickListener.tsx';
 
 export const HeaderSearch = () => {
-  const [showModal, setShowModal] = useState(false);
+  const { ref, isShow, setIsShow } = useOutsideClickListener(false);
   const { price, countOfProducts } = useSelector(
     (state: RootState) => state.cart,
   );
@@ -56,7 +56,7 @@ export const HeaderSearch = () => {
           <div className="pl-[16px] border-l-2">
             <div className="group">
               <div
-                onClick={() => setShowModal(true)}
+                onClick={() => setIsShow(!isShow)}
                 className="relative rounded-full bg-white h-[40px] w-[40px]  group-hover:bg-[#2C742F] mr-3 flex items-center justify-center cursor-pointer"
               >
                 <HeaderIcon />
@@ -75,11 +75,13 @@ export const HeaderSearch = () => {
         </div>
       </div>
 
-      {showModal ? (
+      {isShow ? (
         <>
-          <div className="justify-end items-center  flex overflow-x-hidden  fixed inset-0 z-50 outline-none focus:outline-none font-Poppins top-0">
-            {/*content*/}
-            <div className="border-0 rounded-lg shadow-lg absolute top-0 min-w-[456px] min-h-[1080px] bg-white outline-none focus:outline-none">
+          <div className="justify-end items-center  flex overflow-x-hidden touch-none fixed inset-0 z-50 outline-none focus:outline-none font-Poppins top-0">
+            <div
+              ref={ref}
+              className="border-0 rounded-lg shadow-lg absolute top-0 min-w-[456px] min-h-[1080px] bg-white outline-none focus:outline-none"
+            >
               <div className="flex justify-between">
                 <div className="flex text-[20px] font-medium pl-10 pt-10 pb-5 gap-3">
                   <p>Shopping Card</p>
@@ -87,7 +89,7 @@ export const HeaderSearch = () => {
                 </div>
                 <div
                   className="flex pr-[50px] pt-10 pb-5 group cursor-pointer"
-                  onClick={() => setShowModal(false)}
+                  onClick={() => setIsShow(false)}
                 >
                   <Close />
                 </div>
@@ -108,14 +110,16 @@ export const HeaderSearch = () => {
                   >
                     <p className="text-white font-semibold">Checkout</p>
                   </button>
-                  <button
-                    onClick={() => navigate('/cart')}
-                    className="min-w-[376px] min-h-[51px] rounded-full bg-[#56AC591A] hover:bg-[#00B307] mb-10"
-                  >
-                    <p className="text-[#00B307] font-semibold hover:text-white">
-                      Shopping Cart
-                    </p>
-                  </button>
+                  <div className="group">
+                    <button
+                      onClick={() => navigate('/cart')}
+                      className="min-w-[376px] min-h-[51px] rounded-full bg-[#56AC591A] group-hover:bg-[#00B307] mb-10"
+                    >
+                      <p className="text-[#00B307] font-semibold group-hover:text-white">
+                        Shopping Cart
+                      </p>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

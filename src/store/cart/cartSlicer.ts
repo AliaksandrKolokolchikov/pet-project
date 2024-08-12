@@ -37,7 +37,6 @@ export const cartSlice = createSlice({
           action.payload.price || '0',
         );
 
-        // Обновляем продукт в массиве
         state.products[existingProductIndex] = {
           ...existingProduct,
           quantity: updatedQuantity,

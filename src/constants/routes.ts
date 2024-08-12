@@ -8,4 +8,5 @@ export enum ROUTES {
   WISHLIST = '/wishlist',
   CHECKOUT = '/checkout',
   ABOUT_US = '/about',
+  CONTACT = '/contact',
 }

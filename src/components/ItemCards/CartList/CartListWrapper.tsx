@@ -27,18 +27,23 @@ export const CartWrapper = () => {
             ))}
             <div className="max-w-[872px] h-[77px]">
               <div className="flex justify-between pt-4 px-5">
-                <button className="bg-[#F2F2F2] hover:bg-[#333333] w-[168px] h-[45px] rounded-full font-[Poppins]">
-                  <Link to="/">
-                    <p className="text-[14px] font-semibold text-[#4D4D4D] hover:text-white">
-                      Return to shop
+                <div className="group">
+                  <button className="bg-[#F2F2F2] group-hover:bg-[#333333] w-[168px] h-[45px] rounded-full font-[Poppins]">
+                    <Link to="/">
+                      <p className="text-[14px] font-semibold text-[#4D4D4D] group-hover:text-white">
+                        Return to shop
+                      </p>
+                    </Link>
+                  </button>
+                </div>
+
+                <div className="group">
+                  <button className="bg-[#F2F2F2] group-hover:bg-[#333333] w-[151px] h-[45px] rounded-full font-[Poppins]">
+                    <p className="text-[14px] font-semibold text-[#4D4D4D] group-hover:text-white">
+                      Update Cart
                     </p>
-                  </Link>
-                </button>
-                <button className="bg-[#F2F2F2] hover:bg-[#333333] w-[151px] h-[45px] rounded-full font-[Poppins]">
-                  <p className="text-[14px] font-semibold text-[#4D4D4D] hover:text-white">
-                    Update Cart
-                  </p>
-                </button>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -53,11 +58,13 @@ export const CartWrapper = () => {
                   name="email"
                   autoComplete="off"
                 />
-                <button className="bg-[#333333] hover:bg-[#F2F2F2] rounded-[30px] min-w-[196px] h-[52px] absolute right-0">
-                  <p className="font-semibold text-white hover:text-[#4D4D4D]">
-                    Apply Coupon
-                  </p>
-                </button>
+                <div className="group">
+                  <button className="bg-[#333333] group-hover:bg-[#F2F2F2] rounded-[30px] min-w-[196px] h-[52px] absolute right-0 top-0">
+                    <p className="font-semibold text-white group-hover:text-[#4D4D4D]">
+                      Apply Coupon
+                    </p>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
