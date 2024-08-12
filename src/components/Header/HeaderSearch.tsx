@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { HeaderIcon } from '../Icons/Header/HeaderIcon.tsx';
 import { HeartIcon } from '../Icons/Header/HeartIcon.tsx';
-import { useOutsideClickListener } from '../../hooks/useOutsideClickListener.tsx';
+import { useOutsideClickListener } from '../../hooks';
 import { PopUp } from './PopUp.tsx';
 
 export const HeaderSearch = () => {

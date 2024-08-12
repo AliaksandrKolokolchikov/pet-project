@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { Close } from '../Icons/Products/Close.tsx';
-import { CartPopUpWrapper } from '../ItemCards/CartPopUp/CartPopUpWrapper.tsx';
+import { CartPopUpWrapper } from '../ItemCards';
 import { RootState } from '../../store';
 
 type Props = {
