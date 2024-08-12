@@ -1,12 +1,11 @@
 import { Footer, Header } from '../components';
+import { ContactMap } from '../components/Contact/ContactMap.tsx';
 import home from '../assets/AllCategories/homeAllCat.svg';
 import arrowRight from '../assets/AllCategories/CoupleArrowRight.svg';
-import { WishListWrapper } from '../components/ItemCards/WishList/WishListWrapper.tsx';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-export const WishListPage = () => {
+export const ContactPage = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   return (
     <>
       <Header />
@@ -24,7 +23,7 @@ export const WishListPage = () => {
           </p>
         </div>
       </div>
-      <WishListWrapper />
+      <ContactMap />
       <Footer />
     </>
   );

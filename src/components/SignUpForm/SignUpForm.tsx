@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import validator from 'validator';
+import { useDispatch } from 'react-redux';
 
-import eyeIcon from '../../assets/SignIn/eye.svg';
 import { addUser } from '../../db.ts';
 import { ROUTES } from '../../constants';
+import eyeIcon from '../../assets/SignIn/eye.svg';
+import {
+  emailChange,
+  passwordChange,
+  confirmPasswordChange,
+} from '../../store/signUp/signUpSlice.ts';
 
 export const SignUpForm = () => {
   const [email, setEmail] = useState('');
@@ -17,6 +23,8 @@ export const SignUpForm = () => {
   const [passwordValid, setPasswordValid] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
+
+  const dispatch = useDispatch();
 
   const validateEmailSign = (email: string) => {
     if (!validator.isEmail(email)) {
@@ -66,6 +74,9 @@ export const SignUpForm = () => {
     validatePassword(password);
     validatePasswordConfirm(confirmPassword);
     await addUser({ email, password });
+    dispatch(emailChange(email));
+    dispatch(passwordChange(password));
+    dispatch(confirmPasswordChange(confirmPassword));
   };
 
   return (

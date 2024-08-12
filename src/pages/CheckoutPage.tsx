@@ -2,10 +2,11 @@ import home from '../assets/AllCategories/homeAllCat.svg';
 import arrowRight from '../assets/AllCategories/CoupleArrowRight.svg';
 import { Footer, Header } from '../components';
 import { CheckoutWrapper } from '../components/ItemCards/Checkout/CheckoutWrapper.tsx';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const CheckoutPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   return (
     <>
       <Header />
@@ -22,10 +23,12 @@ export const CheckoutPage = () => {
             onClick={() => navigate('/cart')}
             className="text-[#999999] hover:text-[#00B307] cursor-pointer"
           >
-            Shopping Cart
+            Cart
           </p>
           <img src={arrowRight} alt="arrowRight" />
-          <p className="text-[#00B307]">Checkout</p>
+          <p className="text-[#00B307] capitalize">
+            {location.pathname.replace('/', '')}
+          </p>
         </div>
       </div>
       <CheckoutWrapper />

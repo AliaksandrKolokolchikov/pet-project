@@ -2,10 +2,11 @@ import { Footer, Header } from '../components';
 import { CartWrapper } from '../components/ItemCards/CartList/CartListWrapper.tsx';
 import home from '../assets/AllCategories/homeAllCat.svg';
 import arrowRight from '../assets/AllCategories/CoupleArrowRight.svg';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const CartPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   return (
     <>
       <Header />
@@ -18,7 +19,9 @@ export const CartPage = () => {
             alt="home"
           />
           <img src={arrowRight} alt="arrowRight" />
-          <p className="text-[#00B307] cursor-pointer">Shopping cart</p>
+          <p className="text-[#00B307] cursor-pointer capitalize">
+            {location.pathname.replace('/', '')}
+          </p>
         </div>
       </div>
       <CartWrapper />

@@ -5,8 +5,11 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { HeaderIcon } from '../Icons/Header/HeaderIcon.tsx';
 import { HeartIcon } from '../Icons/Header/HeartIcon.tsx';
+import { useOutsideClickListener } from '../../hooks';
+import { PopUp } from './PopUp.tsx';
 
 export const HeaderSearch = () => {
+  const { ref, isShow, setIsShow } = useOutsideClickListener(false);
   const { price, countOfProducts } = useSelector(
     (state: RootState) => state.cart,
   );
@@ -43,7 +46,7 @@ export const HeaderSearch = () => {
         <div className="flex">
           <div className="group">
             <div
-              className="rounded-full bg-white h-[40px] w-[40px] bg-[#F2F2F2] group-hover:bg-[#2C742F] mr-3 flex items-center justify-center cursor-pointer"
+              className="rounded-full bg-white h-[40px] w-[40px]  group-hover:bg-[#2C742F] mr-3 flex items-center justify-center cursor-pointer"
               onClick={() => navigate('/wishlist')}
             >
               <HeartIcon />
@@ -52,8 +55,8 @@ export const HeaderSearch = () => {
           <div className="pl-[16px] border-l-2">
             <div className="group">
               <div
-                onClick={() => navigate('/cart')}
-                className="relative rounded-full bg-white h-[40px] w-[40px] bg-[#F2F2F2] group-hover:bg-[#2C742F] mr-3 flex items-center justify-center cursor-pointer"
+                onClick={() => setIsShow(!isShow)}
+                className="relative rounded-full bg-white h-[40px] w-[40px]  group-hover:bg-[#2C742F] mr-3 flex items-center justify-center cursor-pointer"
               >
                 <HeaderIcon />
               </div>
@@ -70,6 +73,8 @@ export const HeaderSearch = () => {
           </span>
         </div>
       </div>
+
+      {isShow ? <PopUp setIsShow={setIsShow} ref={ref} /> : null}
     </>
   );
 };
