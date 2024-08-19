@@ -1,6 +1,7 @@
-import { ArrowIcon } from '../Icons/ArrowIcon.tsx';
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+
+import { ArrowIcon } from '../Icons/ArrowIcon.tsx';
 import { ROUTES } from '../../constants';
 
 type Props = {

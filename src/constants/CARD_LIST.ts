@@ -300,3 +300,5 @@ export const FeaturedProducts = [
     rating: 4,
   },
 ];
+
+export const AllCategoriesCard = [...new Set(HotDeals)];

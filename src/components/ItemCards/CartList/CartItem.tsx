@@ -1,5 +1,6 @@
-import { ProductCart } from '../../../types/types.tsx';
 import { useDispatch } from 'react-redux';
+
+import { ProductCart } from '../../../types/types.tsx';
 import {
   addToCart,
   deleteFromCart,

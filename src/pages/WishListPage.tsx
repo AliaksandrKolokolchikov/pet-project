@@ -1,7 +1,7 @@
 import { Footer, Header } from '../components';
 import home from '../assets/AllCategories/homeAllCat.svg';
 import arrowRight from '../assets/AllCategories/CoupleArrowRight.svg';
-import { WishListWrapper } from '../components/ItemCards/WishList/WishListWrapper.tsx';
+import { WishListWrapper } from '../components';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export const WishListPage = () => {

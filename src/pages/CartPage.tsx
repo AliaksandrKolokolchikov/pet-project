@@ -1,8 +1,9 @@
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import { Footer, Header } from '../components';
-import { CartWrapper } from '../components/ItemCards/CartList/CartListWrapper.tsx';
+import { CartWrapper } from '../components';
 import home from '../assets/AllCategories/homeAllCat.svg';
 import arrowRight from '../assets/AllCategories/CoupleArrowRight.svg';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 export const CartPage = () => {
   const navigate = useNavigate();
