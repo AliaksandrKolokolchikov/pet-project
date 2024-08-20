@@ -1,8 +1,10 @@
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import home from '../assets/AllCategories/homeAllCat.svg';
 import arrowRight from '../assets/AllCategories/CoupleArrowRight.svg';
+
 import { Footer, Header } from '../components';
-import { CheckoutWrapper } from '../components/ItemCards/Checkout/CheckoutWrapper.tsx';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { CheckoutWrapper } from '../components';
 
 export const CheckoutPage = () => {
   const navigate = useNavigate();

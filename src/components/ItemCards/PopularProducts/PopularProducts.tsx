@@ -1,7 +1,8 @@
+import { useDispatch } from 'react-redux';
+import Rating from '@mui/material/Rating';
+
 import { Product } from '../../../types/types.tsx';
 import { CartWhite } from '../../Icons/Products/Cart.tsx';
-import Rating from '@mui/material/Rating';
-import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../store/cart/cartSlicer.ts';
 import { addToWish } from '../../../store/wish/wishSlicer.ts';
 import { LikeProduct } from '../../Icons/Products/LikeProduct.tsx';

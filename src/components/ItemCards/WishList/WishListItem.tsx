@@ -1,5 +1,6 @@
-import { Product } from '../../../types/types.tsx';
 import { useDispatch } from 'react-redux';
+
+import { Product } from '../../../types/types.tsx';
 import { addToCart } from '../../../store/cart/cartSlicer.ts';
 import { removeFromWish } from '../../../store/wish/wishSlicer.ts';
 import { Close } from '../../Icons/Products/Close.tsx';

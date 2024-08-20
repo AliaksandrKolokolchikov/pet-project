@@ -1,12 +1,12 @@
 import { Header } from '../components';
 import { Footer } from '../components';
 import { MainMiddleInfo } from '../components/MainMiddleInfo/MainMiddleInfo.tsx';
-import { PopularCategoriesBlock } from '../components/ItemCards/PopularCategories/PopularCategoriesBlock.tsx';
+import { PopularCategoriesBlock } from '../components';
 import { ArrowIcon } from '../components/Icons/ArrowIcon.tsx';
 import { ArrowIconWhite } from '../components/Icons/ArrowIconWhite.tsx';
-import { FeaturedProductsBlock } from '../components/ItemCards/FeaturedProducts/FeaturedProductsBlock.tsx';
-import { HotDealsBlock } from '../components/ItemCards/HotDeals/HotDealsBlock.tsx';
-import { PopularProductsBlock } from '../components/ItemCards/PopularProducts/PopularProductsBlock.tsx';
+import { FeaturedProductsBlock } from '../components';
+import { HotDealsBlock } from '../components';
+import { PopularProductsBlock } from '../components';
 import { BannerInfoCard } from '../components/BannerInfoCard/BannerInfoCard.tsx';
 import { LatestNews } from '../components/LatestNews/LatestNews.tsx';
 import { ClientTestimonialsBlock } from '../components/ItemComment/ClientTestimonials/ClientTestimonialsBlock.tsx';

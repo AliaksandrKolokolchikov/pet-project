@@ -1,9 +1,9 @@
 import { CATEGORY } from '../../constants';
 import { Product, ProductCart } from '../../types/types.tsx';
-import { PopularCategories } from './PopularCategories/PopularCategories.tsx';
-import { PopularProducts } from './PopularProducts/PopularProducts.tsx';
-import { HotDeals } from './HotDeals/HotDeals.tsx';
-import { FeaturedProducts } from './FeaturedProducts/FeaturedProducts.tsx';
+import { PopularCategories } from './PopularCategories';
+import { PopularProducts } from './PopularProducts';
+import { HotDeals } from './HotDeals';
+import { FeaturedProducts } from './FeaturedProducts';
 
 type Props = {
   product: Product | ProductCart;

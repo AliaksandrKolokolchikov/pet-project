@@ -1,7 +1,8 @@
+import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+
 import Logo from '../../assets/Header/Logo.svg';
 import Search from '../../assets/Header/Search.svg';
-import { Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { HeaderIcon } from '../Icons/Header/HeaderIcon.tsx';
 import { HeartIcon } from '../Icons/Header/HeartIcon.tsx';

@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+
 import { RootState } from '../../../store';
 import { CartItem } from './CartItem.tsx';
-import { Link, useNavigate } from 'react-router-dom';
 
 export const CartWrapper = () => {
   const navigate = useNavigate();

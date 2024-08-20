@@ -1,25 +1,29 @@
-import { useDispatch } from 'react-redux';
 import Rating from '@mui/material/Rating';
+import { useDispatch } from 'react-redux';
 
-import { Product } from '../../../types/types.tsx';
-import { CartWhite } from '../../Icons/Products/Cart.tsx';
-import { addToCart } from '../../../store/cart/cartSlicer.ts';
-import { addToWish } from '../../../store/wish/wishSlicer.ts';
-import { LikeProduct } from '../../Icons/Products/LikeProduct.tsx';
-import { QuickView } from '../../Icons/Products/QuickView.tsx';
+import { Product } from '../../types/types.tsx';
+import { CartWhite } from '../Icons/Products/Cart.tsx';
+import { QuickView } from '../Icons/Products/QuickView.tsx';
+import { LikeProduct } from '../Icons/Products/LikeProduct.tsx';
+import { addToWish } from '../../store/wish/wishSlicer.ts';
+import { addToCart } from '../../store/cart/cartSlicer.ts';
 
 interface Props {
   product: Product;
 }
 
-export const FeaturedProducts = ({ product }: Props) => {
+export const AllCategoriesBlock = ({ product }: Props) => {
   const dispatch = useDispatch();
   return (
     <>
-      <div className="flex flex-col justify-center max-w-[243px] max-h-[325px] border hover:border-[#2C742F] group cursor-pointer font-[Poppins]">
+      <div className="flex flex-col justify-center w-[312px] h-[397px] border hover:border-[#2C742F] group cursor-pointer  font-[Poppins] ">
         <div className="relative group">
-          <img className=" " src={product.image} alt="product" />
-          <div className="absolute top-[10px] left-[185px] flex flex-col">
+          <img
+            className="w-[302px] h-[302px]"
+            src={product.image}
+            alt="product"
+          />
+          <div className="absolute top-[10px] left-[250px] flex flex-col">
             <div>
               <LikeProduct
                 onClick={() => dispatch(addToWish(product))}
@@ -30,10 +34,10 @@ export const FeaturedProducts = ({ product }: Props) => {
           </div>
         </div>
 
-        <p className="text-[#4D4D4D] text-[14px] ml-3 group-hover:text-[#2C742F] ">
+        <p className="text-[#4D4D4D] text-[14px] ml-3 group-hover:text-[#2C742F]">
           {product.title}
         </p>
-        <div className="flex justify-between">
+        <div className="flex justify-between ">
           <p className="text-[#1A1A1A] font-medium ml-3 ">{product.price}</p>
           <div
             onClick={() => dispatch(addToCart(product))}

@@ -1,4 +1,5 @@
 import { CATEGORY } from '../constants';
+import { Product } from '../types/types.tsx';
 
 export const CardList = [
   {
@@ -300,3 +301,18 @@ export const FeaturedProducts = [
     rating: 4,
   },
 ];
+
+const removeDuplicatesByName = (array: Product[]) => {
+  const seen = new Set();
+  return array.filter((item) => {
+    const duplicate = seen.has(item.title);
+    seen.add(item.title);
+    return !duplicate;
+  });
+};
+
+export const AllCategoriesCard = removeDuplicatesByName([
+  ...HotDeals,
+  ...PopularProducts,
+  ...FeaturedProducts,
+]);

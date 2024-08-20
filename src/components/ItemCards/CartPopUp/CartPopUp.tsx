@@ -1,7 +1,8 @@
+import { useDispatch } from 'react-redux';
+
 import { ProductCart } from '../../../types/types.tsx';
 import { deleteFromCart } from '../../../store/cart/cartSlicer.ts';
 import { Close } from '../../Icons/Products/Close.tsx';
-import { useDispatch } from 'react-redux';
 
 type Props = {
   product: ProductCart;
