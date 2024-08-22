@@ -7,6 +7,7 @@ import { CartItem } from './CartItem.tsx';
 export const CartWrapper = () => {
   const navigate = useNavigate();
   const { products, price } = useSelector((state: RootState) => state.cart);
+
   return (
     <>
       <div className="text-center font-semibold text-[32px] pt-10 pb-8 font-[Poppins]">

@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import { ScrollToTop } from '../ScrollToTop/ScrollToTop.tsx';
 import { ROUTES } from '../../constants';
-import { useLocation } from 'react-router-dom';
 import { isSpecialRoute } from '../../utils.ts';
 
 type Props = {
@@ -13,6 +14,7 @@ export const HeaderLink = ({ children }: Props) => {
   const textColor = isSpecialRoute(location.pathname as ROUTES)
     ? 'hover:text-[#00B307]'
     : 'hover:text-white';
+
   return (
     <>
       <div className={`${textColor} cursor-pointer ml-8`}>

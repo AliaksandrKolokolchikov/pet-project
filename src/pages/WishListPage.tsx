@@ -1,12 +1,14 @@
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import { Footer, Header } from '../components';
 import home from '../assets/AllCategories/homeAllCat.svg';
 import arrowRight from '../assets/AllCategories/CoupleArrowRight.svg';
 import { WishListWrapper } from '../components';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 export const WishListPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
   return (
     <>
       <Header />

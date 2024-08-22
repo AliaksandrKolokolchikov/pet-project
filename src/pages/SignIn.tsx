@@ -1,6 +1,6 @@
 import { Header } from '../components';
 import { SignInForm } from '../components/SignInForm/SignInForm.tsx';
-import { Footer } from '../components/Footer/Footer.tsx';
+import { Footer } from '../components';
 
 export const SignInPage = () => {
   return (

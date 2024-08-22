@@ -6,7 +6,6 @@ import { CartWhite } from '../../Icons/Products/Cart.tsx';
 import { addToCart } from '../../../store/cart/cartSlicer.ts';
 import { addToWish } from '../../../store/wish/wishSlicer.ts';
 import { LikeProduct } from '../../Icons/Products/LikeProduct.tsx';
-import { QuickView } from '../../Icons/Products/QuickView.tsx';
 
 interface Props {
   product: Product;
@@ -14,6 +13,7 @@ interface Props {
 
 export const PopularProducts = ({ product }: Props) => {
   const dispatch = useDispatch();
+
   return (
     <>
       <div className="flex flex-col justify-center w-[243px] h-[325px] border hover:border-[#2C742F] group cursor-pointer  font-[Poppins] ">
@@ -26,7 +26,7 @@ export const PopularProducts = ({ product }: Props) => {
                 cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group"
               ></LikeProduct>
             </div>
-            <QuickView cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group"></QuickView>
+            {/*<QuickView cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group"></QuickView>*/}
           </div>
         </div>
 

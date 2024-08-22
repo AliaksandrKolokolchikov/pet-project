@@ -14,6 +14,7 @@ interface Props {
 
 export const AllCategoriesBlock = ({ product }: Props) => {
   const dispatch = useDispatch();
+
   return (
     <>
       <div className="flex flex-col justify-center w-[312px] h-[397px] border hover:border-[#2C742F] group cursor-pointer  font-[Poppins] ">

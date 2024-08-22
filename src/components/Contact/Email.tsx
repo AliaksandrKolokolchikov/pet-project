@@ -1,7 +1,7 @@
 import emails from '@emailjs/browser';
 import { ChangeEvent, FormEvent, useRef, useState } from 'react';
 
-interface EmailProps {
+interface StateProps {
   name: string;
   email: string;
   message: string;
@@ -9,15 +9,17 @@ interface EmailProps {
 }
 
 export const EmailContact = () => {
-  const [formValue, setFormValue] = useState<EmailProps>({
+  const [formValue, setFormValue] = useState<StateProps>({
     name: '',
     email: '',
     message: '',
     subject: '',
   });
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>, type: string) => {
     setFormValue((prevState) => ({ ...prevState, [type]: e.target.value }));
   };
+
   const form = useRef(null);
   const sendEmail = (e: FormEvent) => {
     const { name, email, message, subject } = formValue;

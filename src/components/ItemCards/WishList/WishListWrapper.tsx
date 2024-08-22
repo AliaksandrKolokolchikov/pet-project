@@ -9,6 +9,7 @@ import Instagram from '../../../assets/Footer/instagram 1.svg';
 
 export const WishListWrapper = () => {
   const { products } = useSelector((state: RootState) => state.wish);
+
   return (
     <>
       <div className="text-center font-semibold text-[32px] pt-10 pb-8 font-[Poppins]">

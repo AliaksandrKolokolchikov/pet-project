@@ -8,6 +8,7 @@ import arrowRight from '../assets/AllCategories/CoupleArrowRight.svg';
 export const CartPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
   return (
     <>
       <Header />

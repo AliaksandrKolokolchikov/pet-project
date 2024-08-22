@@ -1,22 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 
 import { Footer, Header } from '../components';
-import { ContactMap } from '../components/Contact/ContactMap.tsx';
+import { ContactMap } from '../components';
 import home from '../assets/AllCategories/homeAllCat.svg';
 import arrowRight from '../assets/AllCategories/CoupleArrowRight.svg';
 import locationIcon from '../assets/Contact/location.svg';
 import messages from '../assets/Contact/message.svg';
 import telephone from '../assets/Contact/telephone.svg';
-import { EmailContact } from '../components/Contact/Email.tsx';
+import { EmailContact } from '../components';
 
-type Props = {
-  name: string;
-  email: string;
-  message: string;
-  subject: string;
-};
-
-export const ContactPage = ({ name, email, message, subject }: Props) => {
+export const ContactPage = () => {
   const navigate = useNavigate();
   return (
     <>
@@ -68,12 +61,7 @@ export const ContactPage = ({ name, email, message, subject }: Props) => {
             </div>
           </div>
         </div>
-        <EmailContact
-          name={name}
-          email={email}
-          message={message}
-          subject={subject}
-        />
+        <EmailContact />
       </div>
       <ContactMap />
       <Footer />

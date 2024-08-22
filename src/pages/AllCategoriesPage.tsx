@@ -1,7 +1,12 @@
 import home from '../assets/AllCategories/homeAllCat.svg';
 import arrowRight from '../assets/AllCategories/CoupleArrowRight.svg';
+import filterButton from '../assets/AllCategories/filterButton.svg';
+
 import { Footer, Header } from '../components';
-import { AllCategories } from '../components/AllCategories/AllCategories.tsx';
+import { AllCategories } from '../components';
+import { Categories } from '../components';
+import { Price } from '../components';
+import { RatingFilter } from '../components';
 
 export const AllCategoriesPage = () => {
   return (
@@ -17,8 +22,19 @@ export const AllCategoriesPage = () => {
         </div>
       </div>
 
-      <div className="flex  px-[4%]">
-        <aside className="min-w-[312px] min-h-[1799px] bg-violet-600 "></aside>
+      <div className="flex  px-[4%] font-Poppins">
+        <aside className="min-w-[312px] min-h-[1799px] mt-8">
+          <button className="w-[131px] h-[45px] bg-[#00B307] rounded-full mb-6">
+            <div className="flex items-center justify-center gap-4">
+              <p className="font-semibold text-[14px] text-white">Filter</p>
+              <img src={filterButton} alt="filterButton" />
+            </div>
+          </button>
+          <Categories />
+          <Price />
+          <RatingFilter />
+        </aside>
+
         <div className="max-w-[984px] min-h-[1000px]">
           <div className="flex justify-between  font-[Poppins]">
             <div className="flex pt-[35px] pl-6">

@@ -1,19 +1,23 @@
 import { useDispatch } from 'react-redux';
 import Rating from '@mui/material/Rating';
 
-import { Product } from '../../../types/types.tsx';
+import { ProductCart } from '../../../types/types.tsx';
 import { CartWhite } from '../../Icons/Products/Cart.tsx';
 import { addToCart } from '../../../store/cart/cartSlicer.ts';
 import { addToWish } from '../../../store/wish/wishSlicer.ts';
 import { LikeProduct } from '../../Icons/Products/LikeProduct.tsx';
 import { QuickView } from '../../Icons/Products/QuickView.tsx';
+import { useOutsideClickListener } from '../../../hooks';
+import { QuickViewPopUpWrapper } from '../QuickViewPopUp';
 
 interface Props {
-  product: Product;
+  product: ProductCart;
 }
 
 export const FeaturedProducts = ({ product }: Props) => {
   const dispatch = useDispatch();
+  const { ref, isShow, setIsShow } = useOutsideClickListener(false);
+
   return (
     <>
       <div className="flex flex-col justify-center max-w-[243px] max-h-[325px] border hover:border-[#2C742F] group cursor-pointer font-[Poppins]">
@@ -26,11 +30,14 @@ export const FeaturedProducts = ({ product }: Props) => {
                 cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group"
               ></LikeProduct>
             </div>
-            <QuickView cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group"></QuickView>
+            <QuickView
+              onClick={() => setIsShow(!isShow)}
+              cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group"
+            ></QuickView>
           </div>
         </div>
 
-        <p className="text-[#4D4D4D] text-[14px] ml-3 group-hover:text-[#2C742F] ">
+        <p className="text-[#4D4D4D] text-[14px] ml-3 group-hover:text-[#2C742F]">
           {product.title}
         </p>
         <div className="flex justify-between">
@@ -46,6 +53,13 @@ export const FeaturedProducts = ({ product }: Props) => {
           <Rating size="small" defaultValue={product.rating} />
         </div>
       </div>
+      {isShow ? (
+        <QuickViewPopUpWrapper
+          product={product}
+          setIsShow={setIsShow}
+          ref={ref}
+        />
+      ) : null}
     </>
   );
 };
