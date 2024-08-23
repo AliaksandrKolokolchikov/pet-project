@@ -23,7 +23,7 @@ export const QuickViewPopUpWrapper = ({ setIsShow, ref, product }: Props) => {
           >
             <Close />
           </div>
-          <QuickViewPopUp product={product} />
+          <QuickViewPopUp onClose={setIsShow} product={product} />
         </div>
       </div>
       <div className="opacity-70 fixed inset-0 z-40 bg-[#000000]"></div>

@@ -8,16 +8,19 @@ import Twitter from '../../../assets/Footer/twitter 1.svg';
 import Pinterest from '../../../assets/Footer/pinterest 1.svg';
 import Instagram from '../../../assets/Footer/instagram 1.svg';
 import like from '../../../assets/AllCategories/likeAll.svg';
-import { addToCart, removeFromCart } from '../../../store/cart/cartSlicer.ts';
+import { addToCartQuick } from '../../../store/cart/cartSlicer.ts';
 import { CartWhite } from '../../Icons/Products/Cart.tsx';
 import { addToWish } from '../../../store/wish/wishSlicer.ts';
+import { useState } from 'react';
 
 type Props = {
   product: ProductCart;
+  onClose: (value: boolean) => void;
 };
 
-export const QuickViewPopUp = ({ product }: Props) => {
+export const QuickViewPopUp = ({ product, onClose }: Props) => {
   const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState<number>(0);
 
   return (
     <>
@@ -104,19 +107,21 @@ export const QuickViewPopUp = ({ product }: Props) => {
           <div className="flex items-center pt-6">
             <div className="flex items-center justify-center rounded-full border max-w-[124px] max-h-[50px]">
               <button
-                onClick={() => removeFromCart(product)}
+                onClick={() => {
+                  if (quantity !== 0) setQuantity(quantity - 1);
+                }}
                 className=" border rounded-full w-[34px] h-[34px] bg-gray-100 hover:bg-[#1A1A1A] hover:text-white "
               >
                 -
               </button>
               <input
                 type="text"
-                value={product.quantity}
+                value={quantity}
                 readOnly
                 className="w-10 text-center"
               />
               <button
-                onClick={() => dispatch(addToCart(product))}
+                onClick={() => setQuantity(quantity + 1)}
                 className="border rounded-full w-[34px] h-[34px] bg-gray-100 hover:bg-[#1A1A1A] hover:text-white "
               >
                 +
@@ -126,7 +131,10 @@ export const QuickViewPopUp = ({ product }: Props) => {
             <button className="bg-[#00B307] w-[371px] h-[45px] mx-3 hover:bg-[#2C742F] group rounded-full ">
               <div className="flex justify-center items-center ">
                 <p
-                  onClick={() => dispatch(addToCart(product))}
+                  onClick={() => {
+                    dispatch(addToCartQuick({ product, quantity }));
+                    onClose(false);
+                  }}
                   className="font-semibold text-[14px] text-white mr-3"
                 >
                   Add to Cart

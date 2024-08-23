@@ -15,3 +15,7 @@ export const subtractPrices = (price1: string, price2: string): string => {
 
   return `$${difference.toFixed(2)}`;
 };
+
+export const multiplyPrice = (price: string, quantity: number): string => {
+  return (parseFloat(price.replace('$', '')) * quantity).toFixed(2);
+};

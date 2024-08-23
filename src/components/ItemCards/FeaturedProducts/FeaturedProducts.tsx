@@ -33,7 +33,7 @@ export const FeaturedProducts = ({ product }: Props) => {
             <QuickView
               onClick={() => setIsShow(!isShow)}
               cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group"
-            ></QuickView>
+            />
           </div>
         </div>
 

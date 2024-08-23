@@ -6,6 +6,7 @@ export interface Product {
   price?: string;
   isLarge?: boolean;
   rating?: number;
+  type?: string;
 }
 
 export interface ProductCart extends Product {

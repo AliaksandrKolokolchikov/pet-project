@@ -31,7 +31,7 @@ export const AllCategoriesBlock = ({ product }: Props) => {
                 cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group"
               ></LikeProduct>
             </div>
-            <QuickView cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group"></QuickView>
+            <QuickView cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group" />
           </div>
         </div>
 
