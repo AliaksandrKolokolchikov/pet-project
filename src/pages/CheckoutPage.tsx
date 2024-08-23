@@ -9,6 +9,7 @@ import { CheckoutWrapper } from '../components';
 export const CheckoutPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
   return (
     <>
       <Header />

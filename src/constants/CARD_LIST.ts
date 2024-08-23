@@ -1,4 +1,4 @@
-import { CATEGORY } from '../constants';
+import { CategoriesTypes, CATEGORY } from '../constants';
 import { Product } from '../types/types.tsx';
 
 export const CardList = [
@@ -84,6 +84,7 @@ export const PopularProducts = [
     image: './src/assets/products/popularProducts/apple.svg',
     id: 1,
     rating: 5,
+    type: CategoriesTypes.FRUIT,
   },
   {
     title: 'Fresh Indian Malta',
@@ -92,6 +93,7 @@ export const PopularProducts = [
     image: './src/assets/products/popularProducts/orange.svg',
     id: 2,
     rating: 4,
+    type: CategoriesTypes.FRUIT,
   },
   {
     title: 'Chinese cabbage',
@@ -100,6 +102,7 @@ export const PopularProducts = [
     image: './src/assets/products/popularProducts/cabbage.svg',
     id: 3,
     rating: 5,
+    type: CategoriesTypes.VEGETABLE,
   },
   {
     title: 'Green Lettuce',
@@ -108,6 +111,7 @@ export const PopularProducts = [
     image: './src/assets/products/popularProducts/lettuce.svg',
     id: 4,
     rating: 4,
+    type: CategoriesTypes.SNACKS,
   },
   {
     title: 'Eggplant',
@@ -116,6 +120,7 @@ export const PopularProducts = [
     image: './src/assets/products/popularProducts/eggplant.svg',
     id: 5,
     rating: 3,
+    type: CategoriesTypes.HEALTH,
   },
   {
     title: 'Big Potatoes',
@@ -124,6 +129,7 @@ export const PopularProducts = [
     image: './src/assets/products/popularProducts/potatoes.svg',
     id: 6,
     rating: 5,
+    type: CategoriesTypes.HEALTH,
   },
   {
     title: 'Corn',
@@ -132,6 +138,7 @@ export const PopularProducts = [
     image: './src/assets/products/popularProducts/corn.svg',
     id: 7,
     rating: 5,
+    type: CategoriesTypes.HEALTH,
   },
   {
     title: 'Fresh Cauliflower',
@@ -140,6 +147,7 @@ export const PopularProducts = [
     image: './src/assets/products/popularProducts/cauliflower.svg',
     id: 8,
     rating: 4,
+    type: CategoriesTypes.VEGETABLE,
   },
   {
     title: 'Green Capsicum',
@@ -148,6 +156,7 @@ export const PopularProducts = [
     image: './src/assets/products/popularProducts/capsicum.svg',
     id: 9,
     rating: 4,
+    type: CategoriesTypes.COOKING,
   },
   {
     title: 'Green Chili',
@@ -156,6 +165,7 @@ export const PopularProducts = [
     image: './src/assets/products/popularProducts/chili.svg',
     id: 10,
     rating: 3,
+    type: CategoriesTypes.COOKING,
   },
 ];
 
@@ -168,6 +178,7 @@ export const HotDeals = [
     id: 1,
     isLarge: true,
     rating: 5,
+    type: CategoriesTypes.FRUIT,
   },
   {
     title: 'Chinese cabbage',
@@ -176,6 +187,7 @@ export const HotDeals = [
     image: './src/assets/products/popularProducts/cabbage.svg',
     id: 2,
     rating: 4,
+    type: CategoriesTypes.VEGETABLE,
   },
   {
     title: 'Green Lettuce',
@@ -184,6 +196,7 @@ export const HotDeals = [
     image: './src/assets/products/popularProducts/lettuce.svg',
     id: 3,
     rating: 4,
+    type: CategoriesTypes.VEGETABLE,
   },
   {
     title: 'Eggplant',
@@ -192,6 +205,7 @@ export const HotDeals = [
     image: './src/assets/products/popularProducts/eggplant.svg',
     id: 4,
     rating: 5,
+    type: CategoriesTypes.VEGETABLE,
   },
   {
     title: 'Fresh Cauliflower',
@@ -200,6 +214,7 @@ export const HotDeals = [
     image: './src/assets/products/popularProducts/cauliflower.svg',
     id: 5,
     rating: 4,
+    type: CategoriesTypes.VEGETABLE,
   },
   {
     title: 'Green Capsicum',
@@ -208,6 +223,7 @@ export const HotDeals = [
     image: './src/assets/products/popularProducts/capsicum.svg',
     id: 6,
     rating: 3,
+    type: CategoriesTypes.VEGETABLE,
   },
   {
     title: 'Green Chili',
@@ -216,6 +232,7 @@ export const HotDeals = [
     image: './src/assets/products/popularProducts/chili.svg',
     id: 7,
     rating: 4,
+    type: CategoriesTypes.VEGETABLE,
   },
   {
     title: 'Big Potatoes',
@@ -224,6 +241,7 @@ export const HotDeals = [
     image: './src/assets/products/popularProducts/potatoes.svg',
     id: 8,
     rating: 5,
+    type: CategoriesTypes.VEGETABLE,
   },
   {
     title: 'Corn',
@@ -232,6 +250,7 @@ export const HotDeals = [
     image: './src/assets/products/popularProducts/corn.svg',
     id: 9,
     rating: 5,
+    type: CategoriesTypes.VEGETABLE,
   },
   {
     title: 'Red Chili',
@@ -240,6 +259,7 @@ export const HotDeals = [
     image: './src/assets/products/HotDeals/redChilli.svg',
     id: 8,
     rating: 3,
+    type: CategoriesTypes.VEGETABLE,
   },
   {
     title: 'Red Tomatoes',
@@ -248,6 +268,7 @@ export const HotDeals = [
     image: './src/assets/products/HotDeals/tomato.svg',
     id: 9,
     rating: 5,
+    type: CategoriesTypes.VEGETABLE,
   },
   {
     title: 'Surjapur Mango',
@@ -256,6 +277,7 @@ export const HotDeals = [
     image: './src/assets/products/HotDeals/mango.svg',
     id: 10,
     rating: 4,
+    type: CategoriesTypes.FRUIT,
   },
 ];
 

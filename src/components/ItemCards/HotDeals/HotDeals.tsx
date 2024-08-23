@@ -7,7 +7,6 @@ import { MyTimer } from './TimerHotDeals.tsx';
 import { addToCart } from '../../../store/cart/cartSlicer.ts';
 import { addToWish } from '../../../store/wish/wishSlicer.ts';
 import { LikeProduct } from '../../Icons/Products/LikeProduct.tsx';
-import { QuickView } from '../../Icons/Products/QuickView.tsx';
 
 interface Props {
   product: Product;
@@ -43,7 +42,7 @@ export const HotDeals = ({ product }: Props) => {
                 </div>
               </button>
               <div className="">
-                <QuickView cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group-hover:ml-2 group"></QuickView>
+                {/*  <QuickView cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group-hover:ml-2 group"></QuickView>*/}
               </div>
             </div>
             <p className="text-[#4D4D4D] text-[18px] mt-[18px] text-center group-hover:text-[#2C742F]">

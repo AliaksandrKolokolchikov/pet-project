@@ -1,9 +1,19 @@
 import home from '../assets/AllCategories/homeAllCat.svg';
 import arrowRight from '../assets/AllCategories/CoupleArrowRight.svg';
+import filterButton from '../assets/AllCategories/filterButton.svg';
+
 import { Footer, Header } from '../components';
-import { AllCategories } from '../components/AllCategories/AllCategories.tsx';
+import { AllCategories } from '../components';
+import { Categories } from '../components';
+import { Price } from '../components';
+import { RatingFilter } from '../components';
+import { useSearchParams } from 'react-router-dom';
+import { AllCategoriesCard } from '../constants/CARD_LIST.ts';
 
 export const AllCategoriesPage = () => {
+  const [searchParams] = useSearchParams();
+  const categoryFilter = searchParams.get('category');
+  const rating = searchParams.get('rating');
   return (
     <>
       <Header />
@@ -17,10 +27,21 @@ export const AllCategoriesPage = () => {
         </div>
       </div>
 
-      <div className="flex  px-[4%]">
-        <aside className="min-w-[312px] min-h-[1799px] bg-violet-600 "></aside>
-        <div className="max-w-[984px] min-h-[1000px]">
-          <div className="flex justify-between  font-[Poppins]">
+      <div className="flex  px-[4%] font-Poppins">
+        <aside className="min-w-[312px] min-h-[1799px] mt-8">
+          <button className="w-[131px] h-[45px] bg-[#00B307] rounded-full mb-6">
+            <div className="flex items-center justify-center gap-4">
+              <p className="font-semibold text-[14px] text-white">Filter</p>
+              <img src={filterButton} alt="filterButton" />
+            </div>
+          </button>
+          <Categories />
+          <Price />
+          <RatingFilter />
+        </aside>
+
+        <div className="max-w-[984px] w-full min-h-[1000px]">
+          <div className="flex justify-between w-full font-[Poppins]">
             <div className="flex pt-[35px] pl-6">
               <p className="mt-2.5 mr-2 text-[14px] text-[#808080]">Sort by:</p>
               <select className="border w-[166px] h-[41px] pl-3 text-[14px]">
@@ -29,7 +50,19 @@ export const AllCategoriesPage = () => {
               </select>
             </div>
             <div className="flex pt-[35px] gap-2">
-              <p>52</p>
+              <p>
+                {
+                  AllCategoriesCard.filter((item) => {
+                    const categoryMatch = categoryFilter
+                      ? item.type === categoryFilter
+                      : true;
+                    const ratingMatch = rating
+                      ? item.rating! >= parseInt(rating, 10)
+                      : true;
+                    return categoryMatch && ratingMatch;
+                  }).length
+                }
+              </p>
               <p className="text-[#666666]">Results Found</p>
             </div>
           </div>

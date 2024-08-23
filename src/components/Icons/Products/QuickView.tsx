@@ -1,8 +1,9 @@
 type Props = {
   cssClass: string;
+  onClick: () => void;
 };
 
-export const QuickView = ({ cssClass }: Props) => {
+export const QuickView = ({ cssClass, onClick }: Props) => {
   return (
     <a className={cssClass}>
       <svg
@@ -13,6 +14,7 @@ export const QuickView = ({ cssClass }: Props) => {
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         className="group-hover:fill-[#00B307]"
+        onClick={onClick}
       >
         <desc>Created with Pixso.</desc>
         <defs>

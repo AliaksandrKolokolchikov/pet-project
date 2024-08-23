@@ -6,6 +6,7 @@ const highlightPaths = [
   ROUTES.CHECKOUT,
   ROUTES.ABOUT_US,
   ROUTES.CONTACT,
+  ROUTES.ALL_CATEGORIES,
 ];
 
 export const isSpecialRoute = (pathname: string): boolean => {

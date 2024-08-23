@@ -7,11 +7,11 @@ import { ArrowIconWhite } from '../components/Icons/ArrowIconWhite.tsx';
 import { FeaturedProductsBlock } from '../components';
 import { HotDealsBlock } from '../components';
 import { PopularProductsBlock } from '../components';
-import { BannerInfoCard } from '../components/BannerInfoCard/BannerInfoCard.tsx';
+import { BannerInfoCard } from '../components';
 import { LatestNews } from '../components/LatestNews/LatestNews.tsx';
 import { ClientTestimonialsBlock } from '../components/ItemComment/ClientTestimonials/ClientTestimonialsBlock.tsx';
-import { CompanyBlock } from '../components/CompanyBlock/CompanyBlock.tsx';
-import { FollowBlock } from '../components/FollowBlock/FollowBlock.tsx';
+import { CompanyBlock } from '../components';
+import { FollowBlock } from '../components';
 
 export const MainPage = () => {
   return (

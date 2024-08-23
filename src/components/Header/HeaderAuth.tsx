@@ -1,6 +1,7 @@
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import Map from '../../assets/Header/Map Pin.svg';
 import Arrow from '../../assets/Header/Arrow down.svg';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { isSpecialRoute } from '../../utils.ts';
 
 export const HeaderAuth = () => {

@@ -14,6 +14,7 @@ interface Props {
 
 export const AllCategoriesBlock = ({ product }: Props) => {
   const dispatch = useDispatch();
+
   return (
     <>
       <div className="flex flex-col justify-center w-[312px] h-[397px] border hover:border-[#2C742F] group cursor-pointer  font-[Poppins] ">
@@ -30,7 +31,7 @@ export const AllCategoriesBlock = ({ product }: Props) => {
                 cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group"
               ></LikeProduct>
             </div>
-            <QuickView cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group"></QuickView>
+            <QuickView cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group" />
           </div>
         </div>
 

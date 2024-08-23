@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { Product, ProductCart } from '../../types/types.tsx';
-import { addPrices, subtractPrices } from '../utils.ts';
+import { addPrices, multiplyPrice, subtractPrices } from '../utils.ts';
 import { CATEGORY } from '../../constants';
 import { addToCart as addToDb } from '../../db.ts';
 
@@ -11,6 +11,11 @@ export interface CartState {
   price: string;
   products: ProductCart[];
 }
+
+type AddToCartQuickPayload = {
+  product: Product;
+  quantity: number;
+};
 
 const initialState: CartState = {
   countOfProducts: 0,
@@ -22,6 +27,46 @@ export const cartSlice = createSlice({
   initialState,
   name: 'cart',
   reducers: {
+    addToCartQuick: (
+      state: CartState,
+      action: PayloadAction<AddToCartQuickPayload>,
+    ) => {
+      const { product, quantity } = action.payload;
+
+      const existingProductIndex = state.products.findIndex(
+        (item) => item.title === product.title,
+      );
+
+      // Обновляем общее количество товаров в корзине
+      state.countOfProducts += quantity;
+      // Обновляем общую цену товаров в корзине
+      state.price = addPrices(
+        state.price,
+        multiplyPrice(product.price!, quantity), // добавляем корректную цену с учетом количества
+      );
+
+      if (existingProductIndex >= 0) {
+        const existingProduct = state.products[existingProductIndex];
+        const updatedQuantity = existingProduct.quantity + quantity;
+        const updatedSubtotal = addPrices(
+          existingProduct.subtotal,
+          multiplyPrice(product.price || '0', quantity), // умножаем цену на количество
+        );
+
+        state.products[existingProductIndex] = {
+          ...existingProduct,
+          quantity: updatedQuantity,
+          subtotal: updatedSubtotal,
+        };
+      } else {
+        state.products.push({
+          ...product,
+          category: CATEGORY.CART,
+          quantity: quantity,
+          subtotal: multiplyPrice(product.price || '0', quantity), // умножаем цену на количество
+        });
+      }
+    },
     addToCart: (state: CartState, action: PayloadAction<Product>) => {
       const existingProductIndex = state.products.findIndex(
         (item) => item.title === action.payload.title,
@@ -102,5 +147,6 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, removeFromCart, deleteFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, deleteFromCart, addToCartQuick } =
+  cartSlice.actions;
 export default cartSlice.reducer;

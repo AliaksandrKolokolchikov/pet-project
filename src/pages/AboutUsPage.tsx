@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Footer, Header } from '../components';
-import { CompanyBlock } from '../components/CompanyBlock/CompanyBlock.tsx';
+import { CompanyBlock } from '../components';
 import { ClientTestimonialsBlock } from '../components/ItemComment/ClientTestimonials/ClientTestimonialsBlock.tsx';
 import { ArrowIconWhite } from '../components/Icons/ArrowIconWhite.tsx';
 
@@ -24,6 +24,7 @@ import home from '../assets/AllCategories/homeAllCat.svg';
 export const AboutUsPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
   return (
     <>
       <Header />
