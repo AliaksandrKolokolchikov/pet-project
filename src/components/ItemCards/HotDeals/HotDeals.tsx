@@ -7,6 +7,9 @@ import { MyTimer } from './TimerHotDeals.tsx';
 import { addToCart } from '../../../store/cart/cartSlicer.ts';
 import { addToWish } from '../../../store/wish/wishSlicer.ts';
 import { LikeProduct } from '../../Icons/Products/LikeProduct.tsx';
+import { QuickView } from '../../Icons/Products/QuickView.tsx';
+import { useOutsideClickListener } from '../../../hooks';
+import { QuickViewPopUpWrapper } from '../QuickViewPopUp';
 
 interface Props {
   product: Product;
@@ -14,6 +17,7 @@ interface Props {
 
 export const HotDeals = ({ product }: Props) => {
   const dispatch = useDispatch();
+  const { ref, isShow, setIsShow } = useOutsideClickListener(false);
   const time = new Date();
   time.setSeconds(time.getSeconds() + 172800);
 
@@ -42,7 +46,10 @@ export const HotDeals = ({ product }: Props) => {
                 </div>
               </button>
               <div className="">
-                {/*  <QuickView cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group-hover:ml-2 group"></QuickView>*/}
+                <QuickView
+                  onClick={() => setIsShow(!isShow)}
+                  cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group-hover:ml-2 group"
+                />
               </div>
             </div>
             <p className="text-[#4D4D4D] text-[18px] mt-[18px] text-center group-hover:text-[#2C742F]">
@@ -61,6 +68,13 @@ export const HotDeals = ({ product }: Props) => {
             <MyTimer expiryTimestamp={time} />
           </div>
         </div>
+        {isShow ? (
+          <QuickViewPopUpWrapper
+            product={product}
+            setIsShow={setIsShow}
+            ref={ref}
+          />
+        ) : null}
       </>
     );
   } else {

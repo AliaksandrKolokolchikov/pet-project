@@ -30,7 +30,7 @@ export const CartPopUp = ({ product }: Props) => {
             </div>
           </div>
           <div
-            className="pl- group cursor-pointer "
+            className=" group cursor-pointer "
             onClick={() => dispatch(deleteFromCart(product))}
           >
             <Close />

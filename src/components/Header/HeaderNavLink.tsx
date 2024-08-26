@@ -31,7 +31,7 @@ export const HeaderNavLink = () => {
           <img src={Arrow} alt="Arrow down" />
         </button>
         <div className="flex gap-1">
-          <HeaderLink>Home</HeaderLink>
+          <HeaderLink>Shop</HeaderLink>
           <button>
             <img src={Arrow} alt="Arrow down" />
           </button>

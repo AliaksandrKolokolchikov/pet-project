@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Rating from '@mui/material/Rating';
 
 import dropUp from '../../../assets/AllCategories/dropup.svg';
@@ -7,6 +7,9 @@ import { useSearchParams } from 'react-router-dom';
 export const RatingFilter = () => {
   const [dropdown, setDropdown] = useState(false);
   const [, setSearchParams] = useSearchParams();
+  const handleClick = () => {
+    setDropdown(!dropdown);
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchParams((prevParams) => {
@@ -15,9 +18,6 @@ export const RatingFilter = () => {
         rating: event.target.value,
       });
     });
-  };
-  const handleClick = () => {
-    setDropdown(!dropdown);
   };
 
   return (

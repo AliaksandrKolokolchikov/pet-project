@@ -14,6 +14,7 @@ export const AllCategoriesPage = () => {
   const [searchParams] = useSearchParams();
   const categoryFilter = searchParams.get('category');
   const rating = searchParams.get('rating');
+
   return (
     <>
       <Header />

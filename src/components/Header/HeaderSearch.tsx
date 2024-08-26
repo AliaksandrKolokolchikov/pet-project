@@ -16,6 +16,7 @@ export const HeaderSearch = () => {
   );
 
   const navigate = useNavigate();
+
   return (
     <>
       <div className="flex justify-between items-center h-[93px] pl-[10%] pr-[10%]">
@@ -74,7 +75,6 @@ export const HeaderSearch = () => {
           </span>
         </div>
       </div>
-
       {isShow ? <PopUp setIsShow={setIsShow} ref={ref} /> : null}
     </>
   );

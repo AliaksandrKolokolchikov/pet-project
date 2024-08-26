@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import Rating from '@mui/material/Rating';
 
-import { ProductCart } from '../../../types/types.tsx';
+import { Product } from '../../../types/types.tsx';
 import { CartWhite } from '../../Icons/Products/Cart.tsx';
 import { addToCart } from '../../../store/cart/cartSlicer.ts';
 import { addToWish } from '../../../store/wish/wishSlicer.ts';
@@ -11,7 +11,7 @@ import { useOutsideClickListener } from '../../../hooks';
 import { QuickViewPopUpWrapper } from '../QuickViewPopUp';
 
 interface Props {
-  product: ProductCart;
+  product: Product;
 }
 
 export const FeaturedProducts = ({ product }: Props) => {
@@ -22,7 +22,7 @@ export const FeaturedProducts = ({ product }: Props) => {
     <>
       <div className="flex flex-col justify-center max-w-[243px] max-h-[325px] border hover:border-[#2C742F] group cursor-pointer font-[Poppins]">
         <div className="relative group">
-          <img className=" " src={product.image} alt="product" />
+          <img src={product.image} alt="product" />
           <div className="absolute top-[10px] left-[185px] flex flex-col">
             <div>
               <LikeProduct
