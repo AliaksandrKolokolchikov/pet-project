@@ -31,4 +31,5 @@ export const QuickViewPopUpWrapper = forwardRef<HTMLDivElement, Props>(
     );
   },
 );
+
 QuickViewPopUpWrapper.displayName = 'QuickViewPopUpWrapper';
