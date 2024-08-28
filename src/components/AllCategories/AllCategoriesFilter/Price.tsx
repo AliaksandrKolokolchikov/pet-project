@@ -23,7 +23,6 @@ export const Price = () => {
         price: valueArray.join(','),
       });
     });
-    console.log(valueArray);
   };
 
   return (

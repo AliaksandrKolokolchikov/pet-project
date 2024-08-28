@@ -2,10 +2,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import { AllCategoriesCard } from '../../constants/CARD_LIST.ts';
 import { AllCategoriesBlock } from './AllCategoriesBlock.tsx';
-
-const getPrice = (price: string): number => {
-  return Math.floor(Number(price.replace('$', '')));
-};
+import { getPrice } from '../../utils.ts';
 
 export const AllCategories = () => {
   const [searchParams] = useSearchParams();

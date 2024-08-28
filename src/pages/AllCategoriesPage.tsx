@@ -1,3 +1,5 @@
+import { useSearchParams } from 'react-router-dom';
+
 import home from '../assets/AllCategories/homeAllCat.svg';
 import arrowRight from '../assets/AllCategories/CoupleArrowRight.svg';
 import filterButton from '../assets/AllCategories/filterButton.svg';
@@ -7,13 +9,15 @@ import { AllCategories } from '../components';
 import { Categories } from '../components';
 import { Price } from '../components';
 import { RatingFilter } from '../components';
-import { useSearchParams } from 'react-router-dom';
+
 import { AllCategoriesCard } from '../constants/CARD_LIST.ts';
+import { getPrice } from '../utils.ts';
 
 export const AllCategoriesPage = () => {
   const [searchParams] = useSearchParams();
   const categoryFilter = searchParams.get('category');
   const rating = searchParams.get('rating');
+  const price = searchParams.get('price')?.split(',');
 
   return (
     <>
@@ -60,7 +64,11 @@ export const AllCategoriesPage = () => {
                     const ratingMatch = rating
                       ? item.rating! >= parseInt(rating, 10)
                       : true;
-                    return categoryMatch && ratingMatch;
+                    const priceMatch = price
+                      ? getPrice(item.price!) >= Number(price[0]) &&
+                        getPrice(item.price!) <= Number(price[1])
+                      : true;
+                    return categoryMatch && ratingMatch && priceMatch;
                   }).length
                 }
               </p>
