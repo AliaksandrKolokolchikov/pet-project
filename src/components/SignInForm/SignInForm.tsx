@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import validator from 'validator';
 
@@ -21,6 +21,13 @@ export const SignInForm = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const savedEmail = localStorage.getItem('userEmail');
+    if (savedEmail) {
+      setEmail(savedEmail);
+    }
+  }, []);
 
   const validateEmail = (email: string) => {
     if (!validator.isEmail(email)) {
@@ -53,10 +60,15 @@ export const SignInForm = () => {
     event.preventDefault();
     validateEmail(email);
     validatePassword(password);
-    await getUserByCredentials(email, password);
-    dispatch(emailChange(email));
-    dispatch(passwordChange(password));
-    navigate('/');
+    const user = await getUserByCredentials(email, password);
+    if (user) {
+      dispatch(emailChange(email));
+      dispatch(passwordChange(password));
+      localStorage.setItem('userEmail', email);
+      navigate('/');
+    } else {
+      setPasswordError('Invalid credentials');
+    }
   };
 
   return (

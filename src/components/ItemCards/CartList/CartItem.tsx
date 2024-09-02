@@ -17,7 +17,7 @@ export const CartItem = ({ product }: Props) => {
 
   return (
     <>
-      <div className="flex justify-between items-center border-b border-gray-200 py-2 mx-[2%] max-w-[832px]">
+      <div className="flex justify-between items-center border-b border-gray-200 py-2 mx-[2%] min-w-[832px]">
         <div className="flex items-center w-1/4">
           <img src={product.image} alt="product" className="w-16 h-16 mr-4" />
           <span>{product.title}</span>

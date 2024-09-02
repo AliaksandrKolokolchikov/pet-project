@@ -70,7 +70,7 @@ export const HeaderSearch = () => {
           <span className="flex flex-col text-[11px] font-[Poppins] font-normal leading-[120%] ml-[12px]">
             Shopping cart:
             <span className="font-medium text-[14px] mt-[7px] text-black leading-[100%]">
-              {price}
+              {price && price.length > 1 ? price : <span>0 $</span>}
             </span>
           </span>
         </div>

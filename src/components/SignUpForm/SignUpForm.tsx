@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import validator from 'validator';
 import { useDispatch } from 'react-redux';
 
-import { addUser } from '../../db.ts';
 import { ROUTES } from '../../constants';
 import eyeIcon from '../../assets/SignIn/eye.svg';
 import {
@@ -11,6 +10,7 @@ import {
   passwordChange,
   confirmPasswordChange,
 } from '../../store/signUp/signUpSlice.ts';
+import { addUser } from '../../db.ts';
 
 export const SignUpForm = () => {
   const [email, setEmail] = useState('');
@@ -25,6 +25,7 @@ export const SignUpForm = () => {
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const validateEmailSign = (email: string) => {
     if (!validator.isEmail(email)) {
@@ -77,6 +78,7 @@ export const SignUpForm = () => {
     dispatch(emailChange(email));
     dispatch(passwordChange(password));
     dispatch(confirmPasswordChange(confirmPassword));
+    navigate('/signin');
   };
 
   return (
