@@ -8,9 +8,12 @@ import { HeaderIcon } from '../Icons/Header/HeaderIcon.tsx';
 import { HeartIcon } from '../Icons/Header/HeartIcon.tsx';
 import { useOutsideClickListener } from '../../hooks';
 import { PopUp } from './PopUp.tsx';
+import { useState } from 'react';
+import { AllCategoriesCard } from '../../constants/CARD_LIST.ts';
 
 export const HeaderSearch = () => {
   const { ref, isShow, setIsShow } = useOutsideClickListener(false);
+  const [search, setSearch] = useState('');
   const { price, countOfProducts } = useSelector(
     (state: RootState) => state.cart,
   );
@@ -31,10 +34,12 @@ export const HeaderSearch = () => {
           <div className="grow ml-1">
             <input
               className="w-full h-[42px] focus:outline-none"
-              type="search"
+              type="text"
               name="search"
               placeholder="Search"
               autoComplete="off"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
             />
           </div>
           <div className="relative ">
@@ -44,6 +49,33 @@ export const HeaderSearch = () => {
               </span>
             </button>
           </div>
+          {search && (
+            <div className="absolute top-[7rem] w-[300px] bg-white">
+              {AllCategoriesCard.filter((product) =>
+                product.title.includes(search),
+              ).map((product, index) => (
+                <div
+                  className="border-b max-w-[375px] p-5 pb-3 pt-3 cursor-pointer hover:border-[#2C742F]"
+                  key={product.title + index}
+                  onClick={() => navigate('/all-categories')}
+                >
+                  <div className="flex items-center ">
+                    <img
+                      className="min-w-[100px] min-h-[100px] mr-2"
+                      src={product.image}
+                      alt="product"
+                    />
+                    <div className="min-w-[216px]">
+                      <p>{product.title}</p>
+                      <div className="flex gap-2 items-center">
+                        <p>{product.price}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
         <div className="flex">
           <div className="group">
