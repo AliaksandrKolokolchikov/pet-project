@@ -1,7 +1,8 @@
 import Rating from '@mui/material/Rating';
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
-import { ProductCart } from '../../../types/types.tsx';
+import { Product } from '../../../types/types.tsx';
 import Brand from '../../../assets/AllCategories/Brand.svg';
 import Facebook from '../../../assets/Footer/facebook 1.svg';
 import Twitter from '../../../assets/Footer/twitter 1.svg';
@@ -11,16 +12,16 @@ import like from '../../../assets/AllCategories/likeAll.svg';
 import { addToCartQuick } from '../../../store/cart/cartSlicer.ts';
 import { CartWhite } from '../../Icons/Products/Cart.tsx';
 import { addToWish } from '../../../store/wish/wishSlicer.ts';
-import { useState } from 'react';
 
 type Props = {
-  product: ProductCart;
+  product: Product;
   onClose: (value: boolean) => void;
 };
 
 export const QuickViewPopUp = ({ product, onClose }: Props) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState<number>(0);
+  const isDisabled = quantity <= 0;
 
   return (
     <>
@@ -128,15 +129,20 @@ export const QuickViewPopUp = ({ product, onClose }: Props) => {
               </button>
             </div>
 
-            <button className="bg-[#00B307] w-[371px] h-[45px] mx-3 hover:bg-[#2C742F] group rounded-full ">
+            <button
+              disabled={Boolean(isDisabled)}
+              onClick={() => {
+                dispatch(addToCartQuick({ product, quantity }));
+                onClose(false);
+              }}
+              className={`${
+                isDisabled
+                  ? `bg-[#56AC591A] w-[371px] h-[45px] mx-3 rounded-full`
+                  : `bg-[#00B307] w-[371px] h-[45px] mx-3 hover:bg-[#2C742F] group rounded-full`
+              }`}
+            >
               <div className="flex justify-center items-center ">
-                <p
-                  onClick={() => {
-                    dispatch(addToCartQuick({ product, quantity }));
-                    onClose(false);
-                  }}
-                  className="font-semibold text-[14px] text-white mr-3"
-                >
+                <p className="font-semibold text-[14px] text-white mr-3">
                   Add to Cart
                 </p>
                 <CartWhite />

@@ -5,8 +5,10 @@ import dropUp from '../../../assets/AllCategories/dropup.svg';
 import { CategoriesTypes } from '../../../constants';
 
 export const Categories = () => {
-  const [dropdown, setDropdown] = useState(false);
+  const [dropdown, setDropdown] = useState<boolean>(false);
+
   const [, setSearchParams] = useSearchParams();
+
   const handleClick = () => {
     setDropdown(!dropdown);
   };
@@ -32,10 +34,13 @@ export const Categories = () => {
         />
       </div>
       <div className={`${dropdown ? 'flex flex-col gap-y-2 ' : 'hidden'}`}>
-        <div className="flex gap-2 accent-[#00B307]">
+        <div className="flex gap-2">
+          <input type="radio" onChange={() => handleChange('')} name="radio" />
+          <p className="text-[14px]">All Products</p>
+        </div>
+        <div className="flex gap-2 ">
           <input
             onChange={() => handleChange(CategoriesTypes.FRUIT)}
-            className=" hue-rotate-180"
             type="radio"
             name="radio"
           />

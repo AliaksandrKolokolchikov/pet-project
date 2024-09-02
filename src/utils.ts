@@ -12,3 +12,7 @@ const highlightPaths = [
 export const isSpecialRoute = (pathname: string): boolean => {
   return highlightPaths.includes(pathname as ROUTES);
 };
+
+export const getPrice = (price: string): number => {
+  return Math.floor(Number(price.replace('$', '')));
+};

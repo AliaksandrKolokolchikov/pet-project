@@ -7,6 +7,8 @@ import { QuickView } from '../Icons/Products/QuickView.tsx';
 import { LikeProduct } from '../Icons/Products/LikeProduct.tsx';
 import { addToWish } from '../../store/wish/wishSlicer.ts';
 import { addToCart } from '../../store/cart/cartSlicer.ts';
+import { useOutsideClickListener } from '../../hooks';
+import { QuickViewPopUpWrapper } from '../ItemCards';
 
 interface Props {
   product: Product;
@@ -14,6 +16,7 @@ interface Props {
 
 export const AllCategoriesBlock = ({ product }: Props) => {
   const dispatch = useDispatch();
+  const { ref, isShow, setIsShow } = useOutsideClickListener(false);
 
   return (
     <>
@@ -24,14 +27,18 @@ export const AllCategoriesBlock = ({ product }: Props) => {
             src={product.image}
             alt="product"
           />
+
           <div className="absolute top-[10px] left-[250px] flex flex-col">
             <div>
               <LikeProduct
                 onClick={() => dispatch(addToWish(product))}
                 cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group"
-              ></LikeProduct>
+              />
             </div>
-            <QuickView cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group" />
+            <QuickView
+              onClick={() => setIsShow(!isShow)}
+              cssClass="mb-1 width-[40px] height-[40px] hidden group-hover:block group"
+            />
           </div>
         </div>
 
@@ -51,6 +58,13 @@ export const AllCategoriesBlock = ({ product }: Props) => {
           <Rating size="small" defaultValue={product.rating} />
         </div>
       </div>
+      {isShow ? (
+        <QuickViewPopUpWrapper
+          product={product}
+          setIsShow={setIsShow}
+          ref={ref}
+        />
+      ) : null}
     </>
   );
 };
