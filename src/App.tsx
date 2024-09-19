@@ -3,12 +3,17 @@ import './index.css';
 import { Route, Routes } from 'react-router-dom';
 import { ROUTES } from './constants';
 
-import { CartPage, ContactPage, MainPage, UserDashboard } from './pages';
-import { SignInPage, SignUpPage } from './pages';
-import { AllCategoriesPage } from './pages';
-import { WishListPage } from './pages';
-import { CheckoutPage } from './pages';
-import { AboutUsPage } from './pages';
+import {
+  CartPage,
+  ContactPage,
+  MainPage,
+  SignInPage,
+  SignUpPage,
+  AllCategoriesPage,
+  WishListPage,
+  CheckoutPage,
+  AboutUsPage,
+} from './pages';
 
 function App() {
   return (
