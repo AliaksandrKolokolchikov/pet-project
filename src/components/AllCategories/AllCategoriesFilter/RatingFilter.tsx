@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Rating from '@mui/material/Rating';
 
 import dropUp from '../../../assets/AllCategories/dropup.svg';
