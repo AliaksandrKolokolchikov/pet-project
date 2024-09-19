@@ -27,7 +27,6 @@ export const HeaderNavLink = () => {
         >
           Home
         </button>
-
         <span onClick={() => navigate('/about')}>
           <HeaderLink> About Us</HeaderLink>
         </span>
