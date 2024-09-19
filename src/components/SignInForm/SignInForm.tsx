@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import validator from 'validator';
 
 import eyeIcon from '../../assets/SignIn/eye.svg';
 import { getUserByCredentials } from '../../db.ts';
 import { ROUTES } from '../../constants';
-import { useDispatch } from 'react-redux';
-import { emailChange, passwordChange } from '../../store/signIn/signInSlice.ts';
 
 export const SignInForm = () => {
   const [email, setEmail] = useState('');
@@ -19,15 +17,6 @@ export const SignInForm = () => {
   const [passwordValid, setPasswordValid] = useState(false);
 
   const navigate = useNavigate();
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const savedEmail = localStorage.getItem('userEmail');
-    if (savedEmail) {
-      setEmail(savedEmail);
-    }
-  }, []);
 
   const validateEmail = (email: string) => {
     if (!validator.isEmail(email)) {
@@ -58,13 +47,17 @@ export const SignInForm = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+
     validateEmail(email);
     validatePassword(password);
+
     const user = await getUserByCredentials(email, password);
+
     if (user) {
-      dispatch(emailChange(email));
-      dispatch(passwordChange(password));
-      localStorage.setItem('userEmail', email);
+      localStorage.setItem('userEmail', user.email);
+      localStorage.setItem('userPassword', user.password);
+
+      sessionStorage.setItem('isAuth', 'true');
       navigate('/');
     } else {
       setPasswordError('Invalid credentials');

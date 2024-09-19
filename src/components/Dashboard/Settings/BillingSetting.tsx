@@ -1,81 +1,67 @@
-import { useState } from 'react';
-import validator from 'validator';
+import { useState, useEffect, FormEvent } from 'react';
+import { ToastContainer } from 'react-toastify';
+
+import { useNotification, useUserInfo, useValidateForm } from '../../../hooks';
 
 export const BillingSetting = () => {
-  const [email, setEmail] = useState<string>('');
-  const [emailError, setEmailError] = useState<string>('');
-  const [emailValid, setEmailValid] = useState<boolean>(false);
-  const [phone, setPhone] = useState<string>('');
-  const [phoneError, setPhoneError] = useState<string>('');
-  const [phoneValid, setPhoneValid] = useState<boolean>(false);
-  const [name, setName] = useState<string>('');
-  const [nameError, setNameError] = useState<string>('');
-  const [nameValid, setNameValid] = useState<boolean>(false);
-  const [lastName, setLastName] = useState<string>('');
-  const [lastNameError, setLastNameError] = useState<string>('');
-  const [lastNameValid, setLastNameValid] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [componentName, setComponentName] = useState('');
 
-  const validateEmail = (email: string) => {
-    if (!validator.isEmail(email)) {
-      setEmailError('Invalid email address');
-      setEmailValid(false);
-    } else {
-      setEmailError('');
-      setEmailValid(true);
-    }
-  };
+  const { userInfo, handleInputChange, handleSubmit } = useUserInfo();
 
-  const validateNumber = (number: string) => {
-    if (!validator.isMobilePhone(number)) {
-      setPhoneError('Please enter your phone number');
-      setPhoneValid(false);
-    } else {
-      setPhoneError('');
-      setPhoneValid(true);
-    }
-    if (!validator.isLength(number, { min: 8, max: 15 })) {
-      setPhoneError('Please enter your phone number');
-      setPhoneValid(false);
-    }
-  };
+  const {
+    validateLastName,
+    validateName,
+    validateEmail,
+    setName,
+    setLastName,
+    setPhone,
+    validateNumber,
+    setEmail,
+    nameValid,
+    nameError,
+    lastNameValid,
+    emailValid,
+    phoneValid,
+    isDisabled,
+    phoneError,
+    emailError,
+    lastNameError,
+  } = useValidateForm();
 
-  const validateName = (name: string) => {
-    if (!validator.isAlpha(name, 'en-US')) {
-      setNameError('Please enter your name');
-      setNameValid(false);
-    } else {
-      setNameError('');
-      setNameValid(true);
-    }
-    if (!validator.isLength(name, { min: 2, max: 10 })) {
-      setNameError('Please enter your name');
-    }
-  };
+  const { notifyIsSuccess } = useNotification();
 
-  const validateLastName = (lastName: string) => {
-    if (!validator.isAlpha(lastName, 'en-US')) {
-      setLastNameError('Please enter your last name');
-      setLastNameValid(false);
+  const isDisabledButton = !(isDisabled || !isSubmitting);
+
+  useEffect(() => {
+    if (
+      userInfo.firstName !== '' &&
+      userInfo.lastName !== '' &&
+      userInfo.email !== '' &&
+      userInfo.phone !== ''
+    ) {
+      setIsSubmitting(true);
     } else {
-      setLastNameError('');
-      setLastNameValid(true);
+      setIsSubmitting(false);
     }
-    if (!validator.isLength(lastName, { min: 2, max: 10 })) {
-      setLastNameError('Please enter your last name');
+  }, [userInfo.firstName, userInfo.lastName, userInfo.email, userInfo.phone]);
+
+  useEffect(() => {
+    if (!isDisabled) {
+      setIsSubmitting(false);
     }
+  }, [isDisabled]);
+
+  const handleFormSubmit = (e: FormEvent) => {
+    e.preventDefault();
+
+    setIsSubmitting(true);
+    handleSubmit(e);
+    notifyIsSuccess();
   };
-  const isDisabled =
-    email &&
-    !emailError &&
-    phone &&
-    !phoneError &&
-    name &&
-    !nameError &&
-    lastName &&
-    !lastNameError;
   return (
     <>
-      <form className="border mt-6 rounded-2xl">
+      <form onSubmit={handleFormSubmit} className="border mt-6 rounded-2xl">
         <div className="border-b h-[62px]">
           <p className="text-[20px] font-medium pl-6 pt-[18px]">
             Billing Address
@@ -94,13 +80,19 @@ export const BillingSetting = () => {
                         ? 'bg-green-100 border-green-500 focus:ring-green-500'
                         : 'focus:ring-green-500'
                   }`}
-                  type={name}
+                  type="text"
                   placeholder="Your first name"
                   onChange={(e) => {
                     setName(e.target.value);
                     validateName(e.target.value);
+                    handleInputChange(e);
                   }}
+                  name="firstName"
+                  value={userInfo.firstName}
                 />
+                {nameError && (
+                  <div className="text-red-500 mt-1">{nameError}</div>
+                )}
               </div>
               <div>
                 <p className="mb-2 text-[14px] text-[#1A1A1A]">Last name</p>
@@ -112,13 +104,19 @@ export const BillingSetting = () => {
                         ? 'bg-green-100 border-green-500 focus:ring-green-500'
                         : 'focus:ring-green-500'
                   }`}
-                  type={lastName}
+                  type="text"
                   placeholder="Your last name"
                   onChange={(e) => {
                     setLastName(e.target.value);
                     validateLastName(e.target.value);
+                    handleInputChange(e);
                   }}
+                  name="lastName"
+                  value={userInfo.lastName}
                 />
+                {lastNameError && (
+                  <div className="text-red-500 mt-1">{lastNameError}</div>
+                )}
               </div>
               <div>
                 <div className="flex gap-1 mb-2 text-[14px] text-[#1A1A1A]">
@@ -127,8 +125,13 @@ export const BillingSetting = () => {
                 </div>
                 <input
                   className="border w-[302px] h-[49px] focus:outline-none rounded-[8px] pl-4"
-                  type="name"
+                  type="text"
                   placeholder="Company name"
+                  name="companyName"
+                  value={componentName}
+                  onChange={(e) => {
+                    setComponentName(e.target.value);
+                  }}
                 />
               </div>
             </div>
@@ -136,9 +139,12 @@ export const BillingSetting = () => {
             <div className="pt-4">
               <p className="mb-2 text-[14px] text-[#1A1A1A]">Street Address</p>
               <input
+                onChange={handleInputChange}
                 className="border w-[936px] h-[49px] focus:outline-none rounded-[8px] pl-4"
                 type="text"
                 placeholder="Street Address"
+                name="address"
+                value={userInfo.address}
               />
             </div>
 
@@ -149,24 +155,27 @@ export const BillingSetting = () => {
                 </p>
                 <input
                   className="border w-[302px] h-[49px] focus:outline-none rounded-[8px] pl-4"
-                  type="name"
+                  type="text"
                   placeholder="Select"
+                  name="country"
                 />
               </div>
               <div>
                 <p className="mb-2 text-[14px] text-[#1A1A1A]">States</p>
                 <input
                   className="border w-[302px] h-[49px] focus:outline-none rounded-[8px] pl-4"
-                  type="name"
+                  type="text"
                   placeholder="States"
+                  name="state"
                 />
               </div>
               <div>
                 <p className=" mb-2 text-[14px] text-[#1A1A1A]">Zip Code</p>
                 <input
                   className="border w-[302px] h-[49px] focus:outline-none rounded-[8px] pl-4"
-                  type="name"
+                  type="text"
                   placeholder="Zip code"
+                  name="zipCode"
                 />
               </div>
             </div>
@@ -182,12 +191,15 @@ export const BillingSetting = () => {
                         ? 'bg-green-100 border-green-500 focus:ring-green-500'
                         : 'focus:ring-green-500'
                   }`}
-                  type={email}
+                  type="email"
                   placeholder="Email Address"
                   onChange={(e) => {
                     setEmail(e.target.value);
                     validateEmail(e.target.value);
+                    handleInputChange(e);
                   }}
+                  name="email"
+                  value={userInfo.email}
                 />
                 {emailError && (
                   <div className="text-red-500 mt-1">{emailError}</div>
@@ -203,12 +215,15 @@ export const BillingSetting = () => {
                         ? 'bg-green-100 border-green-500 focus:ring-green-500'
                         : 'focus:ring-green-500'
                   }`}
-                  type={phone}
+                  type="tel"
                   placeholder="Phone number"
                   onChange={(e) => {
                     setPhone(e.target.value);
                     validateNumber(e.target.value);
+                    handleInputChange(e);
                   }}
+                  name="phone"
+                  value={userInfo.phone}
                 />
                 {phoneError && (
                   <div className="text-red-500 mt-1">{phoneError}</div>
@@ -218,11 +233,17 @@ export const BillingSetting = () => {
           </div>
         </div>
         <button
-          disabled={Boolean(!isDisabled)}
-          className="bg-[#00B307] w-[167px] h-[45px] rounded-full hover:bg-[#2C742F] ml-6 my-6"
+          type="submit"
+          disabled={isDisabledButton}
+          className={`${
+            isDisabledButton
+              ? 'bg-[#56AC591A] text-gray-500 cursor-not-allowed'
+              : 'bg-[#00B307] text-white hover:bg-[#2C742F] cursor-pointer'
+          } w-[167px] h-[45px] rounded-full ml-6 my-6`}
         >
-          <p className="text-white text-[14px] font-semibold">Save Changes</p>
+          <p className="text-[14px] font-semibold">Save Changes</p>
         </button>
+        <ToastContainer />
       </form>
     </>
   );

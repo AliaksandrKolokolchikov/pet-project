@@ -1,10 +1,18 @@
 import { useEffect, useState } from 'react';
+import { DashboardTypes } from '../../../constants';
+import { ScrollToTop } from '../../ScrollToTop/ScrollToTop.tsx';
+import { useUserInfo } from '../../../hooks';
 
-export const DashboardInfo = () => {
+type Props = {
+  setSelected: (selected: DashboardTypes) => void;
+};
+
+export const DashboardInfo = ({ setSelected }: Props) => {
   const [avatarImage, setAvatarImage] = useState<string | null>(null);
+  const { userInfo } = useUserInfo();
 
   useEffect(() => {
-    const savedImage = localStorage.getItem('avatar');
+    const savedImage = sessionStorage.getItem('avatar');
     if (savedImage) {
       setAvatarImage(savedImage);
     }
@@ -12,7 +20,8 @@ export const DashboardInfo = () => {
 
   return (
     <>
-      <div className="font-Poppins">
+      <div className="font-Poppins flex gap-2">
+        <ScrollToTop />
         <div className="border rounded-2xl w-[536px] h-[278px] text-center">
           <div>
             {avatarImage ? (
@@ -26,10 +35,24 @@ export const DashboardInfo = () => {
                 No Image
               </div>
             )}
-            <p className="text-[20px] font-medium">Dianne Russell</p>
+            <p className="text-[20px] font-medium">{userInfo.firstName}</p>
             <p className="text-[14px] text-[#808080]">Customer</p>
-            <button>
+            <button onClick={() => setSelected(DashboardTypes.SETTINGS)}>
               <p className="text-[#00B307] pt-2">Edit Profile</p>
+            </button>
+          </div>
+        </div>
+        <div className="border rounded-2xl w-[536px] h-[278px ">
+          <div className="flex flex-col pl-8">
+            <p className="pt-8 pb-[18px] text-[14px] text-[#999999]">
+              Billing Address
+            </p>
+            <p className="text-[18px] font-medium">{userInfo.firstName}</p>
+            <p className="text-[14px] text-[#666666]">{userInfo.address}</p>
+            <p className="py-2">{userInfo.email}</p>
+            <p className="pb-[19px]">{userInfo.phone}</p>
+            <button onClick={() => setSelected(DashboardTypes.SETTINGS)}>
+              <p className="text-[#00B307]">Edit Profile</p>
             </button>
           </div>
         </div>

@@ -12,8 +12,11 @@ import { LatestNews } from '../components/LatestNews/LatestNews.tsx';
 import { ClientTestimonialsBlock } from '../components/ItemComment/ClientTestimonials/ClientTestimonialsBlock.tsx';
 import { CompanyBlock } from '../components';
 import { FollowBlock } from '../components';
+import { useNavigate } from 'react-router-dom';
 
 export const MainPage = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <Header />
@@ -38,7 +41,10 @@ export const MainPage = () => {
                 Free shipping on all your order.
               </p>
             </div>
-            <button className="bg-white rounded-3xl w-[191px] h-[51px] mt-[28px]">
+            <button
+              onClick={() => navigate('/all-categories')}
+              className="bg-white rounded-3xl w-[191px] h-[51px] mt-[28px]"
+            >
               <div className="flex text-[#00B307] justify-center group">
                 <p className="font-[600] pr-[16px] group-hover:text-[#2C742F]">
                   Shop now
@@ -60,7 +66,10 @@ export const MainPage = () => {
               Only Fruit & Vegetable
             </span>
             <div className="flex mt-6 group">
-              <button className="font-semibold text-[#00B307] text-[16px] pr-3 group-hover:text-[#2C742F] pl-[32px]">
+              <button
+                onClick={() => navigate('/all-categories')}
+                className="font-semibold text-[#00B307] text-[16px] pr-3 group-hover:text-[#2C742F] pl-[32px]"
+              >
                 Shop Now
               </button>
               <ArrowIcon />
@@ -74,7 +83,10 @@ export const MainPage = () => {
               Special Products Deal of the Month
             </p>
             <div className="flex group pl-[35%] pt-[32px]">
-              <button className="font-semibold text-[#00B307] text-[16px] group-hover:text-[#2C742F] pr-3 ">
+              <button
+                onClick={() => navigate('/all-categories')}
+                className="font-semibold text-[#00B307] text-[16px] group-hover:text-[#2C742F] pr-3 "
+              >
                 Shop Now
               </button>
               <ArrowIcon />
@@ -103,7 +115,10 @@ export const MainPage = () => {
               Free on all your order, Free Shipping and 30 days money-back
               guarantee
             </p>
-            <button className="bg-[#00B307] rounded-3xl w-[191px] h-[51px] mt-[28px]">
+            <button
+              onClick={() => navigate('/all-categories')}
+              className="bg-[#00B307] rounded-3xl w-[191px] h-[51px] mt-[28px]"
+            >
               <div className="flex text-[#00B307] justify-center group">
                 <p className="font-[600] pr-[16px] text-white group-hover:text-[#2C742F]">
                   Shop now
