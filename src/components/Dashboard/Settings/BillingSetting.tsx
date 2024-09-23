@@ -1,14 +1,9 @@
-import { useState, useEffect, FormEvent } from 'react';
 import { ToastContainer } from 'react-toastify';
 
-import { useNotification, useUserInfo, useValidateForm } from '../../../hooks';
+import { useBillingSetting, useValidateForm } from '../../../hooks';
+import { InputField } from '../InputField.tsx';
 
 export const BillingSetting = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [componentName, setComponentName] = useState('');
-
-  const { userInfo, handleInputChange, handleSubmit } = useUserInfo();
-
   const {
     validateLastName,
     validateName,
@@ -23,42 +18,29 @@ export const BillingSetting = () => {
     lastNameValid,
     emailValid,
     phoneValid,
-    isDisabled,
     phoneError,
     emailError,
     lastNameError,
+    email,
   } = useValidateForm();
 
-  const { notifyIsSuccess } = useNotification();
+  const {
+    isButtonDisabled,
+    handleFormSubmit,
+    userInfo,
+    handleInputChange,
+    componentName,
+    setComponentName,
+    address,
+    setAddressName,
+    country,
+    setCountry,
+    zipCode,
+    setZipCode,
+    states,
+    setStates,
+  } = useBillingSetting(email);
 
-  const isDisabledButton = !(isDisabled || !isSubmitting);
-
-  useEffect(() => {
-    if (
-      userInfo.firstName !== '' &&
-      userInfo.lastName !== '' &&
-      userInfo.email !== '' &&
-      userInfo.phone !== ''
-    ) {
-      setIsSubmitting(true);
-    } else {
-      setIsSubmitting(false);
-    }
-  }, [userInfo.firstName, userInfo.lastName, userInfo.email, userInfo.phone]);
-
-  useEffect(() => {
-    if (!isDisabled) {
-      setIsSubmitting(false);
-    }
-  }, [isDisabled]);
-
-  const handleFormSubmit = (e: FormEvent) => {
-    e.preventDefault();
-
-    setIsSubmitting(true);
-    handleSubmit(e);
-    notifyIsSuccess();
-  };
   return (
     <>
       <form onSubmit={handleFormSubmit} className="border mt-6 rounded-2xl">
@@ -70,180 +52,156 @@ export const BillingSetting = () => {
         <div className="flex font-[Poppins] pt-8 px-[2%]">
           <div className="flex flex-col">
             <div className="flex gap-4">
-              <div>
-                <p className="mb-2 text-[14px] text-[#1A1A1A]"> First name</p>
-                <input
-                  className={`border w-[302px] h-[49px] focus:outline-none rounded-[8px] pl-4 ${
-                    nameError
-                      ? 'border-red-500 focus:ring-red-500'
-                      : nameValid
-                        ? 'bg-green-100 border-green-500 focus:ring-green-500'
-                        : 'focus:ring-green-500'
-                  }`}
-                  type="text"
-                  placeholder="Your first name"
-                  onChange={(e) => {
-                    setName(e.target.value);
-                    validateName(e.target.value);
-                    handleInputChange(e);
-                  }}
-                  name="firstName"
-                  value={userInfo.firstName}
-                />
-                {nameError && (
-                  <div className="text-red-500 mt-1">{nameError}</div>
-                )}
-              </div>
-              <div>
-                <p className="mb-2 text-[14px] text-[#1A1A1A]">Last name</p>
-                <input
-                  className={`border w-[302px] h-[49px] focus:outline-none rounded-[8px] pl-4 ${
-                    lastNameError
-                      ? 'border-red-500 focus:ring-red-500'
-                      : lastNameValid
-                        ? 'bg-green-100 border-green-500 focus:ring-green-500'
-                        : 'focus:ring-green-500'
-                  }`}
-                  type="text"
-                  placeholder="Your last name"
-                  onChange={(e) => {
-                    setLastName(e.target.value);
-                    validateLastName(e.target.value);
-                    handleInputChange(e);
-                  }}
-                  name="lastName"
-                  value={userInfo.lastName}
-                />
-                {lastNameError && (
-                  <div className="text-red-500 mt-1">{lastNameError}</div>
-                )}
-              </div>
-              <div>
-                <div className="flex gap-1 mb-2 text-[14px] text-[#1A1A1A]">
-                  <p>Company Name </p>
-                  <p className="text-[#808080]">(optional)</p>
-                </div>
-                <input
-                  className="border w-[302px] h-[49px] focus:outline-none rounded-[8px] pl-4"
-                  type="text"
-                  placeholder="Company name"
-                  name="companyName"
-                  value={componentName}
-                  onChange={(e) => {
-                    setComponentName(e.target.value);
-                  }}
-                />
-              </div>
+              <InputField
+                label="First name"
+                type="text"
+                value={userInfo.firstName}
+                error={nameError}
+                valid={nameValid}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  validateName(e.target.value);
+                  handleInputChange(e);
+                }}
+                placeholder="First name"
+                name="firstName"
+                width="w-[302px]"
+                widthError="w-[302px]"
+              />
+
+              <InputField
+                label="Last name"
+                type="text"
+                value={userInfo.lastName}
+                error={lastNameError}
+                valid={lastNameValid}
+                onChange={(e) => {
+                  setLastName(e.target.value);
+                  validateLastName(e.target.value);
+                  handleInputChange(e);
+                }}
+                placeholder="Last name"
+                name="lastName"
+                width="w-[302px]"
+                widthError="w-[302px]"
+              />
+
+              <InputField
+                label="Company Name"
+                type="text"
+                value={componentName}
+                onChange={(e) => setComponentName(e.target.value)}
+                placeholder="Company name"
+                name="companyName"
+                width="w-[302px]"
+                widthError="w-[302px]"
+                valid={false}
+              />
             </div>
 
             <div className="pt-4">
-              <p className="mb-2 text-[14px] text-[#1A1A1A]">Street Address</p>
-              <input
-                onChange={handleInputChange}
-                className="border w-[936px] h-[49px] focus:outline-none rounded-[8px] pl-4"
+              <InputField
+                label="Street Address"
                 type="text"
+                value={address}
+                onChange={(e) => {
+                  setAddressName(e.target.value);
+                }}
                 placeholder="Street Address"
-                name="address"
-                value={userInfo.address}
+                name="StreetAddress"
+                width="w-[936px]"
+                valid={false}
               />
             </div>
 
             <div className="flex gap-4 pt-4">
-              <div>
-                <p className="mb-2 text-[14px] text-[#1A1A1A]">
-                  Country / Region
-                </p>
-                <input
-                  className="border w-[302px] h-[49px] focus:outline-none rounded-[8px] pl-4"
-                  type="text"
-                  placeholder="Select"
-                  name="country"
-                />
-              </div>
-              <div>
-                <p className="mb-2 text-[14px] text-[#1A1A1A]">States</p>
-                <input
-                  className="border w-[302px] h-[49px] focus:outline-none rounded-[8px] pl-4"
-                  type="text"
-                  placeholder="States"
-                  name="state"
-                />
-              </div>
-              <div>
-                <p className=" mb-2 text-[14px] text-[#1A1A1A]">Zip Code</p>
-                <input
-                  className="border w-[302px] h-[49px] focus:outline-none rounded-[8px] pl-4"
-                  type="text"
-                  placeholder="Zip code"
-                  name="zipCode"
-                />
-              </div>
+              <InputField
+                label="Country / Region"
+                type="text"
+                value={country}
+                onChange={(e) => {
+                  setCountry(e.target.value);
+                }}
+                placeholder="Select"
+                name="country"
+                width="w-[302px]"
+                valid={false}
+              />
+
+              <InputField
+                label="States"
+                type="text"
+                value={states}
+                onChange={(e) => {
+                  setStates(e.target.value);
+                }}
+                placeholder="States"
+                name="state"
+                width="w-[302px]"
+                valid={false}
+              />
+
+              <InputField
+                label="Zip Code"
+                type="text"
+                value={zipCode}
+                onChange={(e) => {
+                  setZipCode(e.target.value);
+                }}
+                placeholder="Zip code"
+                name="zipCode"
+                width="w-[302px]"
+                valid={false}
+              />
             </div>
 
             <div className="flex gap-4 pt-4">
-              <div>
-                <p className="mb-2 text-[14px] text-[#1A1A1A]">Email</p>
-                <input
-                  className={`border w-[460px] h-[49px] focus:outline-none rounded-[8px] pl-4 ${
-                    emailError
-                      ? 'border-red-500 focus:ring-red-500'
-                      : emailValid
-                        ? 'bg-green-100 border-green-500 focus:ring-green-500'
-                        : 'focus:ring-green-500'
-                  }`}
-                  type="email"
-                  placeholder="Email Address"
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                    validateEmail(e.target.value);
-                    handleInputChange(e);
-                  }}
-                  name="email"
-                  value={userInfo.email}
-                />
-                {emailError && (
-                  <div className="text-red-500 mt-1">{emailError}</div>
-                )}
-              </div>
-              <div>
-                <p className="mb-2 text-[14px] text-[#1A1A1A]">Phone</p>
-                <input
-                  className={`border w-[460px] h-[49px] focus:outline-none rounded-[8px] pl-4 ${
-                    phoneError
-                      ? 'border-red-500 focus:ring-red-500'
-                      : phoneValid
-                        ? 'bg-green-100 border-green-500 focus:ring-green-500'
-                        : 'focus:ring-green-500'
-                  }`}
-                  type="tel"
-                  placeholder="Phone number"
-                  onChange={(e) => {
-                    setPhone(e.target.value);
-                    validateNumber(e.target.value);
-                    handleInputChange(e);
-                  }}
-                  name="phone"
-                  value={userInfo.phone}
-                />
-                {phoneError && (
-                  <div className="text-red-500 mt-1">{phoneError}</div>
-                )}
-              </div>
+              <InputField
+                label="Email"
+                type="email"
+                value={userInfo.email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  validateEmail(e.target.value);
+                  handleInputChange(e);
+                }}
+                placeholder="Email Address"
+                name="email"
+                width="w-[460px]"
+                valid={emailValid}
+                error={emailError}
+              />
+
+              <InputField
+                label="Email"
+                type="tel"
+                value={userInfo.phone}
+                onChange={(e) => {
+                  setPhone(e.target.value);
+                  validateNumber(e.target.value);
+                  handleInputChange(e);
+                }}
+                placeholder="Phone number"
+                name="phone"
+                width="w-[460px]"
+                valid={phoneValid}
+                error={phoneError}
+              />
             </div>
           </div>
         </div>
         <button
           type="submit"
-          disabled={isDisabledButton}
+          disabled={isButtonDisabled}
           className={`${
-            isDisabledButton
+            isButtonDisabled
               ? 'bg-[#56AC591A] text-gray-500 cursor-not-allowed'
               : 'bg-[#00B307] text-white hover:bg-[#2C742F] cursor-pointer'
           } w-[167px] h-[45px] rounded-full ml-6 my-6`}
         >
           <p className="text-[14px] font-semibold">Save Changes</p>
         </button>
-        <ToastContainer />
+        <ToastContainer containerId="containerID2" />
       </form>
     </>
   );

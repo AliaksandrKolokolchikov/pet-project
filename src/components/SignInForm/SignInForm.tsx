@@ -1,51 +1,35 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import validator from 'validator';
 
 import eyeIcon from '../../assets/SignIn/eye.svg';
 import { getUserByCredentials } from '../../db.ts';
 import { ROUTES } from '../../constants';
+import { useValidateForm } from '../../hooks';
+import { InputField } from '../Dashboard';
 
 export const SignInForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [emailValid, setEmailValid] = useState(false);
-  const [passwordValid, setPasswordValid] = useState(false);
 
   const navigate = useNavigate();
 
-  const validateEmail = (email: string) => {
-    if (!validator.isEmail(email)) {
-      setEmailError('Invalid email address');
-      setEmailValid(false);
-    } else {
-      setEmailError('');
-      setEmailValid(true);
-    }
-  };
-
-  const validatePassword = (password: string) => {
-    if (
-      !validator.isLength(password, { min: 8 }) ||
-      validator.isAlphanumeric(password)
-    ) {
-      setPasswordError(
-        'Password must be at least 8 characters long and include special characters',
-      );
-      setPasswordValid(false);
-    } else {
-      setPasswordError('');
-      setPasswordValid(true);
-    }
-  };
+  const {
+    validateEmail,
+    validatePassword,
+    passwordValid,
+    passwordError,
+    emailError,
+    setPasswordError,
+    emailValid,
+    email,
+    setEmail,
+    password,
+    setPassword,
+  } = useValidateForm();
 
   const isDisabled = password && email && !passwordError && !emailError;
 
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
     validateEmail(email);
@@ -72,25 +56,19 @@ export const SignInForm = () => {
       >
         <h2 className="text-2xl font-semibold text-center mb-4">Sign In</h2>
         <div className="mb-4 relative">
-          <label htmlFor="email" className="block text-gray-700">
-            Email
-          </label>
-          <input
+          <InputField
+            label="Email"
             type="email"
-            id="email"
             value={email}
+            valid={emailValid}
+            error={emailError}
             onChange={(e) => {
               setEmail(e.target.value);
               validateEmail(e.target.value);
             }}
-            className={`w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 ${
-              emailError
-                ? 'border-red-500 focus:ring-red-500'
-                : emailValid
-                  ? 'bg-green-100 border-green-500 focus:ring-green-500'
-                  : 'focus:ring-green-500'
-            }`}
-            required
+            placeholder="Email"
+            name="email"
+            width="w-full"
           />
           {emailValid && !emailError && (
             <span className="absolute right-3 top-[65%] transform -translate-y-1/2 text-green-500">
@@ -98,35 +76,28 @@ export const SignInForm = () => {
             </span>
           )}
         </div>
-        {emailError && <div className="text-red-500 mt-1">{emailError}</div>}
         <div className="mb-4 relative">
-          <label htmlFor="password" className="block text-gray-700">
-            Password
-          </label>
-          <input
+          <InputField
+            label="Password"
             type={showPassword ? 'text' : 'password'}
-            id="password"
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
               validatePassword(e.target.value);
             }}
-            className={`w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 ${
-              passwordError
-                ? 'border-red-500 focus:ring-red-500'
-                : 'focus:ring-green-500'
-            } ${passwordValid ? 'bg-green-100 border-green-500' : ''}`}
-            required
+            error={passwordError}
+            valid={passwordValid}
+            placeholder="Your password"
+            name="password"
+            width="w-full"
           />
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute bg-cover bg-center mt-3 right-0 mr-2 px-3 py-2 focus:outline-none"
+            className="absolute bg-cover bg-center top-[48px] right-0 mr-2 px-3 py-2 focus:outline-none"
             style={{ backgroundImage: `url(${eyeIcon})` }}
-          ></button>
-          {passwordError && (
-            <div className="text-red-500 mt-1">{passwordError}</div>
-          )}
+          />
+
           {passwordValid && <div className="text-green-500 mt-1">✔️</div>}
         </div>
         <div className="flex items-center justify-between mb-4">

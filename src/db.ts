@@ -108,3 +108,52 @@ export const updateUserEmail = async (
     throw error;
   }
 };
+
+// export const updateUserEmail = async (
+//   currentEmail: string | null,
+//   email: string,
+// ) => {
+//   console.log(currentEmail);
+//   console.log(email);
+//   try {
+//     if (!currentEmail) {
+//       throw new Error('Current email is not provided');
+//     }
+//     if (!email || email.trim() === '') {
+//       throw new Error('New email is invalid');
+//     }
+//
+//     const db = await initDB();
+//     const tx = db.transaction(STORE_NAME, 'readwrite');
+//     const store = tx.objectStore(STORE_NAME);
+//
+//     const users = await store.getAll();
+//
+//     const user = users.find(
+//       (user: { email: string }) => user.email === currentEmail,
+//     );
+//
+//     if (!user) {
+//       throw new Error('User not found');
+//     }
+//
+//     // Проверяем, существует ли уже новый email
+//     const emailExists = users.some((u: { email: string }) => u.email === email);
+//     if (emailExists) {
+//       throw new Error('Email is already in use');
+//     }
+//
+//     // Обновляем email пользователя
+//     user.email = email;
+//
+//     // Сохраняем изменения
+//     await store.put(user);
+//     await tx.done;
+//
+//     console.log('Email updated successfully');
+//     return user;
+//   } catch (error) {
+//     console.error('Failed to update email:', error);
+//     throw error; // Перебрасываем ошибку, чтобы она была обработана
+//   }
+// };

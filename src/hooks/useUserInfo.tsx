@@ -35,6 +35,7 @@ export const useUserInfo = () => {
 
   return {
     userInfo,
+    setUserInfo,
     handleInputChange,
     handleSubmit,
     handleUserInfo,

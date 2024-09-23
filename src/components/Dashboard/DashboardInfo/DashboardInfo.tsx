@@ -42,20 +42,22 @@ export const DashboardInfo = ({ setSelected }: Props) => {
             </button>
           </div>
         </div>
-        <div className="border rounded-2xl w-[536px] h-[278px ">
-          <div className="flex flex-col pl-8">
-            <p className="pt-8 pb-[18px] text-[14px] text-[#999999]">
-              Billing Address
-            </p>
-            <p className="text-[18px] font-medium">{userInfo.firstName}</p>
-            <p className="text-[14px] text-[#666666]">{userInfo.address}</p>
-            <p className="py-2">{userInfo.email}</p>
-            <p className="pb-[19px]">{userInfo.phone}</p>
-            <button onClick={() => setSelected(DashboardTypes.SETTINGS)}>
-              <p className="text-[#00B307]">Edit Profile</p>
-            </button>
+        {userInfo.email.length > 0 ? (
+          <div className="border rounded-2xl w-[536px] h-[278px ">
+            <div className="flex flex-col pl-8">
+              <p className="pt-8 pb-[18px] text-[14px] text-[#999999]">
+                Billing Address
+              </p>
+              <p className="text-[18px] font-medium">{userInfo.firstName}</p>
+              <p className="text-[14px] text-[#666666]">{userInfo.address}</p>
+              <p className="py-2">{userInfo.email}</p>
+              <p className="pb-[19px]">{userInfo.phone}</p>
+              <button onClick={() => setSelected(DashboardTypes.SETTINGS)}>
+                <p className="text-[#00B307]">Edit Profile</p>
+              </button>
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
     </>
   );

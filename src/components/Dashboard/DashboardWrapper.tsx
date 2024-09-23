@@ -17,6 +17,7 @@ import activeSetting from '../../assets/Dashboard/BlackSetting.svg';
 import logout from '../../assets/Dashboard/logout.svg';
 import blackOut from '../../assets/Dashboard/blackOut.svg';
 import { DashboardTypes } from '../../constants';
+import { WrapperField } from './WrapperField.tsx';
 
 export const DashboardWrapper = () => {
   const [selected, setSelected] = useState<DashboardTypes>(
@@ -32,7 +33,7 @@ export const DashboardWrapper = () => {
       case DashboardTypes.CART:
         return <CartListDashboard />;
       case DashboardTypes.SETTINGS:
-        return <UserSetting setSelected={setSelected} />;
+        return <UserSetting />;
       case DashboardTypes.LOGOUT:
         return <LogOut />;
       default:
@@ -45,91 +46,45 @@ export const DashboardWrapper = () => {
       <aside className="border rounded w-[312px] h-full text-[#666666] cursor-pointer">
         <p className="text-[20px] font-medium pt-6 pl-4 pb-4">Navigation</p>
         <div className="flex flex-col">
-          <div
+          <WrapperField
+            label="Dashboard"
+            active={activeDashboard}
+            onActive={grayDash}
+            selectedType={selected === DashboardTypes.DASHBOARD}
             onClick={() => setSelected(DashboardTypes.DASHBOARD)}
-            className={`flex items-center gap-2 pb-4 h-[56px] ${
-              selected === DashboardTypes.DASHBOARD
-                ? 'text-[#1A1A1A] bg-[#EDF2EE] border-l-2 border-[#00B307] pt-4'
-                : ''
-            }`}
-          >
-            <img
-              className="ml-5"
-              src={
-                selected === DashboardTypes.DASHBOARD
-                  ? activeDashboard
-                  : grayDash
-              }
-              alt="dashboard"
-            />
-            <p>Dashboard</p>
-          </div>
+          />
 
-          <div
+          <WrapperField
+            label="Wishlist"
+            active={blackWish}
+            onActive={wish}
+            selectedType={selected === DashboardTypes.WISHLIST}
             onClick={() => setSelected(DashboardTypes.WISHLIST)}
-            className={`flex items-center gap-2 pb-4 h-[56px] ${
-              selected === DashboardTypes.WISHLIST
-                ? 'text-[#1A1A1A] bg-[#EDF2EE] border-l-2 border-[#00B307] pt-4'
-                : ''
-            }`}
-          >
-            <img
-              className="ml-5"
-              src={selected === DashboardTypes.WISHLIST ? blackWish : wish}
-              alt="wishlist"
-            />
-            <p>Wishlist</p>
-          </div>
+          />
 
-          <div
+          <WrapperField
+            label="Shopping Cart"
             onClick={() => setSelected(DashboardTypes.CART)}
-            className={`flex items-center gap-2 pb-4 h-[56px] ${
-              selected === DashboardTypes.CART
-                ? 'text-[#1A1A1A] bg-[#EDF2EE] border-l-2 border-[#00B307] pt-4'
-                : ''
-            }`}
-          >
-            <img
-              className="ml-5"
-              src={selected === DashboardTypes.CART ? blackCart : cart}
-              alt="cart"
-            />
-            <p>Shopping Cart</p>
-          </div>
+            selectedType={selected === DashboardTypes.CART}
+            active={blackCart}
+            onActive={cart}
+          />
 
-          <div
+          <WrapperField
+            label="Settings"
             onClick={() => setSelected(DashboardTypes.SETTINGS)}
-            className={`flex items-center gap-2 pb-4 h-[56px] ${
-              selected === DashboardTypes.SETTINGS
-                ? 'text-[#1A1A1A] bg-[#EDF2EE] border-l-2 border-[#00B307] pt-4'
-                : ''
-            }`}
-          >
-            <img
-              className="ml-5"
-              src={
-                selected === DashboardTypes.SETTINGS ? activeSetting : setting
-              }
-              alt="settings"
-            />
-            <p>Settings</p>
-          </div>
+            selectedType={selected === DashboardTypes.SETTINGS}
+            active={activeSetting}
+            onActive={setting}
+          />
 
-          <div
+          <WrapperField
+            label="Log-out"
             onClick={() => setSelected(DashboardTypes.LOGOUT)}
-            className={`flex items-center gap-2 pb-4 h-[56px] ${
-              selected === DashboardTypes.LOGOUT
-                ? 'text-[#1A1A1A] bg-[#EDF2EE] border-l-2 border-[#00B307] pt-4'
-                : ''
-            }`}
-          >
-            <img
-              className="ml-5"
-              src={selected === DashboardTypes.LOGOUT ? blackOut : logout}
-              alt="logout"
-            />
-            <p>Log-out</p>
-          </div>
+            selectedType={selected === DashboardTypes.LOGOUT}
+            active={blackOut}
+            onActive={logout}
+          />
         </div>
       </aside>
 

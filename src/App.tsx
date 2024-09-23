@@ -13,6 +13,7 @@ import {
   WishListPage,
   CheckoutPage,
   AboutUsPage,
+  UserDashboard,
 } from './pages';
 
 function App() {
