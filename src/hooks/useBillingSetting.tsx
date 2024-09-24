@@ -55,6 +55,7 @@ export const useBillingSetting = (email: string) => {
 
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
     const currentEmail = localStorage.getItem('userEmail');
 
     try {

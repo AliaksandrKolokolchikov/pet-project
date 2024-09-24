@@ -50,7 +50,7 @@ export const useValidateForm = () => {
       setNameValid(false);
     } else {
       setNameError('');
-      setNameValid(true);
+      setNameValid(false);
     }
     if (!validator.isLength(name, { min: 2, max: 10 })) {
       setNameError('Name should be between 2 and 10 characters');
@@ -139,5 +139,7 @@ export const useValidateForm = () => {
     setPasswordError,
     setPassword,
     confirmPasswordError,
+    setNameValid,
+    setNameError,
   };
 };
