@@ -1,4 +1,4 @@
-import { TestimonialItem } from '../../../constants/COMMENT_LIST.ts';
+import { TestimonialItem } from '../../../constants';
 import { CommentFactory } from '../CommentFactory.tsx';
 import { CommentWrapper } from '../CommentWrapper.tsx';
 

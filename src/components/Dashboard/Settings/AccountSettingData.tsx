@@ -1,4 +1,5 @@
 import { ToastContainer } from 'react-toastify';
+
 import { useValidateForm, useBillingSetting } from '../../../hooks';
 import { InputField } from '../InputField.tsx';
 
@@ -24,8 +25,7 @@ export const AccountSettingData = () => {
   } = useValidateForm();
 
   const { isButtonDisabled, handleFormSubmit, userInfo, handleInputChange } =
-    useBillingSetting(email);
-
+    useBillingSetting(email, emailValid, phoneValid, nameValid, lastNameValid);
   return (
     <>
       <form onSubmit={handleFormSubmit}>

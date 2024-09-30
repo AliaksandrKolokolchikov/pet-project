@@ -5,6 +5,7 @@ import { DashboardInfo } from './DashboardInfo';
 import { WishlistDashboard } from './WishListDashboard';
 import { CartListDashboard } from './CartListDashboard';
 import { LogOut } from './LogOut';
+import { WrapperField } from './WrapperField.tsx';
 
 import activeDashboard from '../../assets/Dashboard/dashboard.svg';
 import grayDash from '../../assets/Dashboard/grayDash.svg';
@@ -17,7 +18,6 @@ import activeSetting from '../../assets/Dashboard/BlackSetting.svg';
 import logout from '../../assets/Dashboard/logout.svg';
 import blackOut from '../../assets/Dashboard/blackOut.svg';
 import { DashboardTypes } from '../../constants';
-import { WrapperField } from './WrapperField.tsx';
 
 export const DashboardWrapper = () => {
   const [selected, setSelected] = useState<DashboardTypes>(

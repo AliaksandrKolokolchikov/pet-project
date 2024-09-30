@@ -24,34 +24,34 @@ export const UserAuth = () => {
 
   useEffect(() => {
     const savedEmail = localStorage.getItem('userEmail');
-    const savedImage = sessionStorage.getItem('avatar');
     const savedUpdatedEmail = localStorage.getItem('updatedEmail');
+    const savedImage = sessionStorage.getItem('avatar');
 
-    if (savedEmail) {
+    if (!initialEmail && savedEmail) {
       setInitialEmail(savedEmail);
     }
+
+    if (savedUpdatedEmail) {
+      setUpdatedEmail(savedUpdatedEmail);
+    }
+
     if (savedImage) {
       setAvatarImage(savedImage);
     }
-    if (isAuthenticated) {
-      if (savedUpdatedEmail) {
-        setUpdatedEmail(savedUpdatedEmail);
-      }
-    }
-  }, []);
+  }, [initialEmail]);
 
   useEffect(() => {
     if (isAuthenticated && userInfo.email) {
+      if (!initialEmail) {
+        setInitialEmail(userInfo.email);
+        localStorage.setItem('userEmail', userInfo.email);
+      }
       if (userInfo.email !== updatedEmail) {
         setUpdatedEmail(userInfo.email);
         localStorage.setItem('updatedEmail', userInfo.email);
-        if (!initialEmail) {
-          setInitialEmail(userInfo.email);
-          localStorage.setItem('userEmail', userInfo.email);
-        }
       }
     }
-  }, [userInfo.email, updatedEmail, initialEmail, isAuthenticated]);
+  }, [userInfo.email, isAuthenticated, initialEmail, updatedEmail]);
 
   const renderAvatar = () => {
     return avatarImage ? (
@@ -67,7 +67,7 @@ export const UserAuth = () => {
     );
   };
 
-  const displayedEmail = isAuthenticated ? updatedEmail || initialEmail : null;
+  const displayedEmail = isAuthenticated ? initialEmail || updatedEmail : null;
 
   const renderAuthButtons = () => {
     if (isAuthenticated && displayedEmail) {

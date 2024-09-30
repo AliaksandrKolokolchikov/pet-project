@@ -39,7 +39,13 @@ export const BillingSetting = () => {
     setZipCode,
     states,
     setStates,
-  } = useBillingSetting(email);
+  } = useBillingSetting(
+    email,
+    emailValid,
+    phoneValid,
+    nameValid,
+    lastNameValid,
+  );
 
   return (
     <>
@@ -173,7 +179,7 @@ export const BillingSetting = () => {
               />
 
               <InputField
-                label="Email"
+                label="Phone"
                 type="tel"
                 value={userInfo.phone}
                 onChange={(e) => {

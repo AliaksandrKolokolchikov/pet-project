@@ -45,16 +45,16 @@ export const useValidateForm = () => {
   };
 
   const validateName = (name: string) => {
+    if (!validator.isLength(name, { min: 2, max: 10 })) {
+      setNameError('Name should be between 2 and 10 characters');
+      setNameValid(false);
+    }
     if (!validator.isAlpha(name, 'en-US')) {
       setNameError('Please enter a valid name');
       setNameValid(false);
     } else {
       setNameError('');
-      setNameValid(false);
-    }
-    if (!validator.isLength(name, { min: 2, max: 10 })) {
-      setNameError('Name should be between 2 and 10 characters');
-      setNameValid(false);
+      setNameValid(true);
     }
   };
 
@@ -141,5 +141,8 @@ export const useValidateForm = () => {
     confirmPasswordError,
     setNameValid,
     setNameError,
+    setLastNameValid,
+    setPhoneValid,
+    setEmailValid,
   };
 };

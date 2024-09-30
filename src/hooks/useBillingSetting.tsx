@@ -11,7 +11,13 @@ interface InitialValues {
   phone: string;
 }
 
-export const useBillingSetting = (email: string) => {
+export const useBillingSetting = (
+  email: string,
+  isEmailValid: boolean,
+  isPhoneValid: boolean,
+  isNameValid: boolean,
+  isLastNameValid: boolean,
+) => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const isInitialized = useRef(false);
   const [addressName, setAddressName] = useState('');
@@ -42,10 +48,10 @@ export const useBillingSetting = (email: string) => {
 
   const hasChanges = (): boolean => {
     return (
-      userInfo.firstName !== initialValues.firstName ||
-      userInfo.lastName !== initialValues.lastName ||
-      userInfo.email !== initialValues.email ||
-      userInfo.phone !== initialValues.phone
+      (userInfo.firstName !== initialValues.firstName && isNameValid) ||
+      (userInfo.lastName !== initialValues.lastName && isLastNameValid) ||
+      (userInfo.email !== initialValues.email && isEmailValid) ||
+      (userInfo.phone !== initialValues.phone && isPhoneValid)
     );
   };
 
