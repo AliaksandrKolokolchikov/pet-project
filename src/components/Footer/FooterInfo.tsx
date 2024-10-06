@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom';
+
 import Logo from '../../assets/Header/Logo.svg';
 import ApplePay from '../../assets/Footer/ApplePay.svg';
 import Visa from '../../assets/Footer/Visa.svg';
 import Discover from '../../assets/Footer/Discover.svg';
 import MasterCard from '../../assets/Footer/Mastercard.svg';
 import Secure from '../../assets/Footer/Cart.svg';
-import { Link } from 'react-router-dom';
 
 export const FooterInfo = () => {
   return (
@@ -77,7 +78,7 @@ export const FooterInfo = () => {
       <div className="border mt-[60px] mx-[10%] opacity-20"></div>
       <div className="flex justify-between items-center px-[10%]">
         <p className="text-[#808080] pt-[29px] text-[14px]">
-          Ecobazar eCommerce © 2021. All Rights Reserved
+          ECobazar eCommerce © 2021. All Rights Reserved
         </p>
         <div className="flex gap-2 pt-5">
           <img src={ApplePay} alt="ApplePay" />

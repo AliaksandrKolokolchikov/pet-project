@@ -52,3 +52,15 @@ it('renders AllCategoriesPage when navigating to all-categories route', () => {
   const allCategoriesPageElement = screen.getByText(/AllCategoriesPage/i);
   expect(allCategoriesPageElement).toBeInTheDocument();
 });
+
+it('renders AllCategoriesPage when navigating to all-categories route', () => {
+  renderFunction(ROUTES.CONTACT);
+  const allCategoriesPageElement = screen.getByText(/CONTACT/i);
+  expect(allCategoriesPageElement).toBeInTheDocument();
+});
+
+it('renders AllCategoriesPage when navigating to all-categories route', () => {
+  renderFunction(ROUTES.ABOUT_US);
+  const allCategoriesPageElement = screen.getByText(/AboutUsPage/i);
+  expect(allCategoriesPageElement).toBeInTheDocument();
+});

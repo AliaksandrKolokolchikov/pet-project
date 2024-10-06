@@ -24,7 +24,7 @@ export const HeaderAuth = () => {
           </button>
           <span className="hover:text-green-400 cursor-pointer">USD</span>
           <button>
-            <img className="pr-4" src={Arrow} alt="Arrow down" />
+            <img className="pr-4" src={Arrow} alt="Arrow down USD" />
           </button>
           <UserAuth />
         </div>

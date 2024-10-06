@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import validator from 'validator';
 import { useDispatch } from 'react-redux';
 
 import { ROUTES } from '../../constants';
@@ -11,55 +10,30 @@ import {
   confirmPasswordChange,
 } from '../../store/signUp/signUpSlice.ts';
 import { addUser } from '../../db.ts';
+import { useValidateForm } from '../../hooks';
 
 export const SignUpForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [accepted, setAccepted] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [emailValid, setEmailValid] = useState(false);
-  const [passwordValid, setPasswordValid] = useState(false);
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [confirmPasswordError, setConfirmPasswordError] = useState('');
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    emailError,
+    passwordError,
+    emailValid,
+    passwordValid,
+    confirmPasswordError,
+    confirmPassword,
+    setConfirmPassword,
+    validateEmail,
+    validatePassword,
+    validatePasswordConfirm,
+  } = useValidateForm();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const validateEmailSign = (email: string) => {
-    if (!validator.isEmail(email)) {
-      setEmailError('Invalid email address');
-      setEmailValid(false);
-    } else {
-      setEmailError('');
-      setEmailValid(true);
-    }
-  };
-
-  const validatePassword = (password: string) => {
-    if (
-      !validator.isLength(password, { min: 8 }) ||
-      validator.isAlphanumeric(password)
-    ) {
-      setPasswordError(
-        'Password must be at least 8 characters long and include special characters',
-      );
-    } else {
-      setPasswordError('');
-      setPasswordValid(true);
-    }
-  };
-
-  const validatePasswordConfirm = (confirmPassword: string) => {
-    if (confirmPassword !== password) {
-      setConfirmPasswordError('Password mismatch');
-      setPasswordValid(false);
-    } else {
-      setConfirmPasswordError('');
-      setPasswordValid(true);
-    }
-  };
 
   const isSubmitDisabled =
     password &&
@@ -71,7 +45,7 @@ export const SignUpForm = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    validateEmailSign(email);
+    validateEmail(email);
     validatePassword(password);
     validatePasswordConfirm(confirmPassword);
     await addUser({ email, password });
@@ -98,9 +72,10 @@ export const SignUpForm = () => {
           <input
             id="email"
             value={email}
+            placeholder="Enter email"
             onChange={(e) => {
               setEmail(e.target.value);
-              validateEmailSign(e.target.value);
+              validateEmail(e.target.value);
             }}
             className={`w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 ${
               emailError
@@ -127,6 +102,7 @@ export const SignUpForm = () => {
             type={showPassword ? 'text' : 'password'}
             id="password"
             value={password}
+            placeholder="Enter password"
             onChange={(e) => {
               setPassword(e.target.value);
               validatePassword(e.target.value);
@@ -149,6 +125,7 @@ export const SignUpForm = () => {
             type={showPassword ? 'text' : 'password'}
             id="confirm-password"
             value={confirmPassword}
+            placeholder="Confirm Password"
             onChange={(e) => {
               setConfirmPassword(e.target.value);
               validatePasswordConfirm(e.target.value);
@@ -193,8 +170,12 @@ export const SignUpForm = () => {
           Login
         </button>
         <p className="text-center mt-4 text-[14px]">
-          Already have account{' '}
-          <Link to={ROUTES.SIGN_IN} className="text-[14px] font-bold">
+          Already have account -{' '}
+          <Link
+            to={ROUTES.SIGN_IN}
+            className="text-[14px] font-bold"
+            data-testid="signin-link"
+          >
             Login
           </Link>
         </p>

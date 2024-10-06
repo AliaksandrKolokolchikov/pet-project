@@ -63,14 +63,14 @@ export const EmailContact = () => {
             type="text"
             value={formValue.name}
             onChange={(e) => handleChange(e, 'name')}
-            placeholder="Template Cookie"
+            placeholder="Name"
           />
           <input
             className="border w-[434px] h-[49px] focus:outline-none rounded-[8px] pl-4"
             type="email"
             value={formValue.email}
             onChange={(e) => handleChange(e, 'email')}
-            placeholder="Template Cookie"
+            placeholder="Email"
           />
         </div>
         <input
