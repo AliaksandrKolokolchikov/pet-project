@@ -12,6 +12,7 @@ import {
 import { addUser } from '../../db.ts';
 import { useValidateForm } from '../../hooks';
 
+
 export const SignUpForm = () => {
   const [accepted, setAccepted] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -34,7 +35,6 @@ export const SignUpForm = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const isSubmitDisabled =
     password &&
     confirmPassword &&
