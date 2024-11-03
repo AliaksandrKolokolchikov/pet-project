@@ -13,6 +13,7 @@ import {
   WishListPage,
   CheckoutPage,
   AboutUsPage,
+  UserDashboard,
 } from './pages';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path={ROUTES.CHECKOUT} element={<CheckoutPage />} />
         <Route path={ROUTES.ABOUT_US} element={<AboutUsPage />} />
         <Route path={ROUTES.CONTACT} element={<ContactPage />} />
+        <Route path={ROUTES.DASHBOARD} element={<UserDashboard />} />
       </Routes>
     </>
   );

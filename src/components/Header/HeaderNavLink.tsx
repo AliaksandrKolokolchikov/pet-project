@@ -1,6 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import Arrow from '../../assets/Header/Arrow down.svg';
 import { HeaderLink } from './HeaderLink.tsx';
 import { isSpecialRoute } from '../../utils.ts';
 import { ROUTES } from '../../constants';
@@ -19,6 +18,7 @@ export const HeaderNavLink = () => {
     >
       <div className="flex items-center gap-1 poppins-nav">
         <button
+          onClick={() => navigate('/')}
           className={`${
             isSpecialRoute(location.pathname as ROUTES)
               ? `hover:text-[#00B307]`
@@ -27,29 +27,6 @@ export const HeaderNavLink = () => {
         >
           Home
         </button>
-        <button>
-          <img src={Arrow} alt="Arrow down" />
-        </button>
-        <div className="flex gap-1">
-          <HeaderLink>Shop</HeaderLink>
-          <button>
-            <img src={Arrow} alt="Arrow down" />
-          </button>
-        </div>
-        <div className="flex gap-1">
-          <HeaderLink>Pages</HeaderLink>
-          <button>
-            <img src={Arrow} alt="Arrow down" />
-          </button>
-        </div>
-        <div className="flex gap-1">
-          <span>
-            <HeaderLink>Blog</HeaderLink>
-          </span>
-          <button>
-            <img src={Arrow} alt="Arrow down" />
-          </button>
-        </div>
         <span onClick={() => navigate('/about')}>
           <HeaderLink> About Us</HeaderLink>
         </span>

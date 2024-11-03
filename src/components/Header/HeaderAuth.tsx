@@ -1,13 +1,9 @@
-import { useLocation, useNavigate } from 'react-router-dom';
-
 import Map from '../../assets/Header/Map Pin.svg';
 import Arrow from '../../assets/Header/Arrow down.svg';
 import { isSpecialRoute } from '../../utils.ts';
+import { UserAuth } from './UserAuth.tsx';
 
 export const HeaderAuth = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-
   return (
     <>
       <div
@@ -30,25 +26,7 @@ export const HeaderAuth = () => {
           <button>
             <img className="pr-4" src={Arrow} alt="Arrow down" />
           </button>
-          <div className="flex gap-1  ">
-            <button
-              className="hover:text-green-400"
-              onClick={() => {
-                navigate('/signin');
-              }}
-            >
-              Sign In
-            </button>
-            <span className="pl-1 pr-1">/</span>
-            <button
-              className="hover:text-green-400"
-              onClick={() => {
-                navigate('/signup');
-              }}
-            >
-              Sign Up
-            </button>
-          </div>
+          <UserAuth />
         </div>
       </div>
     </>

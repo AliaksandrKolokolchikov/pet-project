@@ -16,3 +16,11 @@ export enum CategoriesTypes {
   BAKERY = 'bread & Bakery',
   HEALTH = 'beauty & Health',
 }
+
+export enum DashboardTypes {
+  DASHBOARD = 'dashboard',
+  WISHLIST = 'wishlist',
+  CART = 'cart',
+  SETTINGS = 'settings',
+  LOGOUT = 'logout',
+}

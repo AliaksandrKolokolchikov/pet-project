@@ -6,3 +6,4 @@ export * from './CompanyBlock';
 export * from './Contact';
 export * from './FollowBlock';
 export * from './AllCategories';
+export * from './Dashboard';

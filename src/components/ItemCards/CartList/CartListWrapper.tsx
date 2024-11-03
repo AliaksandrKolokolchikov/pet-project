@@ -40,7 +40,10 @@ export const CartWrapper = () => {
                 </div>
 
                 <div className="group">
-                  <button className="bg-[#F2F2F2] group-hover:bg-[#333333] w-[151px] h-[45px] rounded-full font-[Poppins]">
+                  <button
+                    onClick={() => navigate('/cart')}
+                    className="bg-[#F2F2F2] group-hover:bg-[#333333] w-[151px] h-[45px] rounded-full font-[Poppins]"
+                  >
                     <p className="text-[14px] font-semibold text-[#4D4D4D] group-hover:text-white">
                       Update Cart
                     </p>
