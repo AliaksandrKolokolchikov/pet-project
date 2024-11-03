@@ -43,7 +43,7 @@ export const FooterSub = () => {
             <img src={Pinterest} alt="Pinterest" />
           </div>
         </a>
-        <a target="_blank" href="https://www.instagram.com/ " rel="noreferrer">
+        <a target="_blank" href="https://www.instagram.com/" rel="noreferrer">
           <div className="hover:bg-[#00B307] w-10 h-10 rounded-[30px] flex items-center justify-center">
             <img src={Instagram} alt="Instagram" />
           </div>

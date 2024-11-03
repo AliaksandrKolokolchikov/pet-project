@@ -33,3 +33,5 @@ export const signUpSlice = createSlice({
 export const { emailChange, passwordChange, confirmPasswordChange } =
   signUpSlice.actions;
 export default signUpSlice.reducer;
+
+export class signUpSlicer {}

@@ -7,3 +7,7 @@ export * from './Contact';
 export * from './FollowBlock';
 export * from './AllCategories';
 export * from './Dashboard';
+export * from './LatestNews';
+export * from './MainMiddleInfo';
+export * from './ScrollToTop';
+export * from './SignInForm';

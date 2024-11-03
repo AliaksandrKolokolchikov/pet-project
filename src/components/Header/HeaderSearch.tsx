@@ -88,6 +88,7 @@ export const HeaderSearch = () => {
         <div className="flex">
           <div className="group">
             <div
+              data-testid="wishlist-button"
               className="rounded-full bg-white h-[40px] w-[40px]  group-hover:bg-[#2C742F] mr-3 flex items-center justify-center cursor-pointer"
               onClick={() => navigate('/wishlist')}
             >
@@ -97,6 +98,7 @@ export const HeaderSearch = () => {
           <div className="pl-[16px] border-l-2">
             <div className="group">
               <div
+                data-testid="cart-button"
                 onClick={() => setIsShow(!isShow)}
                 className="relative rounded-full bg-white h-[40px] w-[40px]  group-hover:bg-[#2C742F] mr-3 flex items-center justify-center cursor-pointer"
               >

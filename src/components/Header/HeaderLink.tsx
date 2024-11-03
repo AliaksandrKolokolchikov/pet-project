@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { ScrollToTop } from '../ScrollToTop/ScrollToTop.tsx';
+import { ScrollToTop } from '../ScrollToTop';
 import { ROUTES } from '../../constants';
 import { isSpecialRoute } from '../../utils.ts';
 

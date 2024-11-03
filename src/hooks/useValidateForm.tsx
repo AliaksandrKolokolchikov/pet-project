@@ -144,5 +144,9 @@ export const useValidateForm = () => {
     setLastNameValid,
     setPhoneValid,
     setEmailValid,
+    setEmailError,
+    setPasswordValid,
+    setConfirmPasswordError,
+    confirmPassword,
   };
 };
